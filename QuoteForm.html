@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script>
+function myFunction() {
+  document.getElementById('datepicker').valueAsDate = new Date();
+  document.getElementById('datepicker').min = new Date().toISOString().substring(0, 10);
+}
+</script>
+
+
+<style>
+.container {
+  padding: 20px;
+
+}
+
+form {
+   margin: 0 auto;
+   width: 500px;
+   border: 3px solid black;
+   background-color: #daedf4;
+   padding: 10px;
+
+}
+
+.entry {
+   padding: 10px;
+
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+   background-color: #389bd9;
+   color: white;
+}
+
+.read {
+   background-color: #E8E8E8;
+}
+
+input[type=text]:focus, input[type=number]:focus, input[type=date]:focus {
+  border: 3px solid #555;
+
+}
+
+label {
+  font-size: 15pt;
+}
+
+</style>
+
+<title>Website Name</title>
+<meta charset="UTF-8">
+
+
+</head>
+
+<body onload="myFunction()">
+
+<div class="container">
+<form method="post">
+
+
+<div class="entry">
+<label for="gallons">Gallons Requested:</label>
+<input type="number" id="gallons" name="gallons" min="1" required> <br>
+</div>
+
+<div class="entry">
+<label for="deliveryaddress" >Delivery Address:</label>
+<input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read"><br>
+</div>
+
+<div class="entry">
+<label for="datepicker">Delivery Date:</label>
+<input type="date" id="datepicker" name="datepicker" ><br>
+</div>
+
+<div class="entry">
+<label for="suggestedprice">Suggested $/Gallon:</label>
+<input type="number" id="suggestedprice" name="suggestedprice" readonly class="read"> <br>
+</div>
+
+<div class="entry">
+<label for="total">Total Amount Due: $</label>
+<input type="number" id="total" name="total" readonly class="read"> <br>
+</div>
+
+<div class="submitbutton">
+<input type="submit" value="Submit">
+</div>
+
+</form>
+</div>
+</body>
+
+</html>
