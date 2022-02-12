@@ -1,12 +1,15 @@
 :root {
   font-family: Arial, Helvetica, sans-serif;
 }
+body {
+  margin: 0px;
+}
 /*referenced code from w3 schools for styling navigation bar*/
 /* Add background color to the top navigation */
 .topnav {
   background-color: #333;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 /* Style the links inside the navigation bar */
@@ -18,7 +21,7 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 /* Change color of links on hover */
