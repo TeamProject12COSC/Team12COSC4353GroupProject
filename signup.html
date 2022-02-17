@@ -4,17 +4,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sign Up Page</title>
         <link rel="stylesheet" href="ssignup.css" />
-        .nav-links ul li{
-        list-style: none;
-        display: inline-block;
-        padding: 8px 12px;
-        position: relative;
-        }
+        <link rel="stylesheet" href="Nav.css">
+        <script type="text/javascript" src="Nav.js"></script>
     </head>
+    <header>
+     <div class="topnav" id="myTopnav" onclick="changeActive(event)">
+        <a href="Login.html">Logout</a>  
+        <a href="signup.html" class="active">Profile</a>
+        <a href="FuelQuoteHistory.html">Fuel Quote History</a>
+        <a href="QuoteForm.html">Request Fuel Quote</a>
+     </div>
+    </header>
     <body>
         <section class="header">
             <div class="signup">
-                <form action="/action_page.php">
+                <form action="">
                     <label for="fname">Full Name</label>
                     <input type="text" id="fullname" name="Full Name" placeholder="Full Name">
 
