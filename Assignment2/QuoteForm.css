@@ -1,15 +1,19 @@
 :root {
-  font-family: Arial, Helvetica, sans-serif;
-}
-.container {
-  padding: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
+body {
+  background-color: #009579;
+}
+
+.container {
+  padding: 20px;}
+
 form {
+  border-radius: 5px;
    margin: 0 auto;
    width: 500px;
-   border: 3px solid black;
-   background-color: #daedf4;
+   background-color: #f2f2f2;
    padding: 10px;
 
 }
@@ -19,28 +23,45 @@ form {
 
 }
 
-input {
+input[type=submit] {
   width: 100%;
-  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
   margin: 8px 0;
-  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-input[type=submit] {
-   background-color: #389bd9;
-   color: white;
-   font-size: large;
+input[type=submit]:hover {
+  background-color: #45a049;
 }
 
 .read {
    background-color: #E8E8E8;
 }
 /* css referenced from w3 schools*/
-input[type=number] .edit:focus, input[type=date] .edit:focus {
+#datepicker:focus, #gallons:focus {
   border: 3px solid #555;
+}
+
+input:focus {
+  outline: none;
+}
+
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
 
 }
 
 label {
-  font-size: 15pt;
+  font-size: 20px;
 }
