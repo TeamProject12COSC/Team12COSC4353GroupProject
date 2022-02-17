@@ -1,0 +1,28 @@
+/*Styles referenced from https://www.w3schools.com/css/css_table.asp*/
+#request {
+    font-family: 'Roboto', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #request td, #request th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #request tr:nth-child(even){background-color: #f2f2f2;}
+  #request tr:nth-child(odd){background-color: #ffffff;}
+
+  
+  #request tr:hover {background-color: #ddd;}
+  
+  #request th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #21533e;
+    color: white;
+  }
+  body {
+    background-color: #009579;
+  }
