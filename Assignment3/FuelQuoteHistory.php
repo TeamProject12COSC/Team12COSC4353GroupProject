@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start(); //start session
     $array = array("okay street 51233", "Houston bar street 230", "austin road 2933");
     $gallonPrice =  (mt_rand(-88888, 999999) / 10);
     $gallonRequested =  (mt_rand(0, 999999) / 10);
