@@ -1,17 +1,11 @@
 <?php
-    session_start(); //start session
+   // session_start(); //start session
     $array = array("okay street 51233", "Houston bar street 230", "austin road 2933");
     $gallonPrice =  (mt_rand(-88888, 999999) / 10);
     $gallonRequested =  (mt_rand(0, 999999) / 10);
-    $total = (mt_rand(-9999999, 95699999) / 10);
-    if ($gallonPrice < 0)
-    {
-      $gallonPrice =  (mt_rand(0, 999999) / 10);
-    }
-    if ($total < 0)
-    {
-      $total =   (mt_rand(0, 95699999) / 10);
-    }
+    $total = (mt_rand(0, 95699999) / 10);
+    $gallonPrice =  (mt_rand(0, 999999) / 10);
+    $total =   (mt_rand(0, 95699999) / 10);
     $randomDate = date("Y M d");
 
 ?>
@@ -27,12 +21,12 @@
 </head>
 
 <header>
-  <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-      <a href="Login.html">Logout</a>  
-      <a href="Profile.html">Profile</a>
-      <a href="FuelQuoteHistory.php" class="active">Fuel Quote History</a>
-      <a href="QuoteForm.php">Request Fuel Quote</a>
-  </div>
+    <div class="topnav" id="myTopnav" onclick="changeActive(event)">
+        <a href="Login.html">Logout</a>  
+        <a href="signup.html">Profile</a>
+        <a href="FuelQuoteHistory.php" class="active">Fuel Quote History</a>
+        <a href="QuoteForm.php">Request Fuel Quote</a>
+    </div>
 </header>
 
 
