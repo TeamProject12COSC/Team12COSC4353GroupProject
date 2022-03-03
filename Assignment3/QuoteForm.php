@@ -1,5 +1,8 @@
 <?php
-    session_start();//start session 
+   session_start();//start session 
+ require_once 'vendor/autoload.php';
+ $faker = Faker\Factory::create();
+
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
     }
@@ -7,17 +10,11 @@
     {
       $date = $_POST["datepicker"];
     }
+
     $array = array("okay street 51233", "Houston bar street 230", "austin road 2933");
-    $gallonPrice =  (mt_rand(-88888, 999999) / 10);
-    $total = (mt_rand(-9999999, 95699999) / 10);
-    if ($gallonPrice < 0)
-    {
-      $gallonPrice =  (mt_rand(0, 999999) / 10);
-    }
-    if ($total < 0)
-    {
-      $total =   (mt_rand(0, 95699999) / 10);
-    } 
+     
+    $gallonPrice =  (mt_rand(0, 999999) / 10);
+    $total = (mt_rand(0, 95699999) / 10);
 
 ?>
 
@@ -33,12 +30,12 @@
 </head>
 
 <header>
-  <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-      <a href="Login.html">Logout</a>  
-      <a href="signup.html">Profile</a>
-      <a href="FuelQuoteHistory.php">Fuel Quote History</a>
-      <a href="QuoteForm.php" class="active">Request Fuel Quote</a>
-  </div>
+    <div class="topnav" id="myTopnav" onclick="changeActive(event)">
+        <a href="Login.html">Logout</a>  
+        <a href="signup.html">Profile</a>
+        <a href="FuelQuoteHistory.php">Fuel Quote History</a>
+        <a href="QuoteForm.php" class="active">Request Fuel Quote</a>
+    </div>
 </header>
 
 <?php
@@ -64,7 +61,7 @@
 
   <div class="entry">
   <label for="deliveryaddress" >Delivery Address:</label>
-  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php echo $array[rand(0, count($array) - 1)];?>"><br>
+  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php echo $faker->address?>"><br> <!--$array[rand(0, count($array) - 1)];-->
   </div>
 
   <div class="entry edit">
