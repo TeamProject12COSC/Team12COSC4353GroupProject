@@ -1,20 +1,22 @@
 <?php
-   session_start();//start session 
+  // session_start();//start session 
  require_once 'vendor/autoload.php';
+ 
+ //connect to database and retrieve data to fill in form
  $faker = Faker\Factory::create();
+ $address = $faker->address;
 
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
+        $gallonPrice =  $faker->randomFloat(2, 1);
+        $total = $gal * $gallonPrice;
+    
     }
     if (isset($_POST["datepicker"]))
     {
       $date = $_POST["datepicker"];
     }
 
-    $array = array("okay street 51233", "Houston bar street 230", "austin road 2933");
-     
-    $gallonPrice =  (mt_rand(0, 999999) / 10);
-    $total = (mt_rand(0, 95699999) / 10);
 
 ?>
 
@@ -61,7 +63,7 @@
 
   <div class="entry">
   <label for="deliveryaddress" >Delivery Address:</label>
-  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php echo $faker->address?>"><br> <!--$array[rand(0, count($array) - 1)];-->
+  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php echo $address?>"><br> <!--$array[rand(0, count($array) - 1)];-->
   </div>
 
   <div class="entry edit">
@@ -71,12 +73,12 @@
 
   <div class="entry">
   <label for="suggestedprice">Suggested $/Gallon:</label>
-  <input type="number" id="suggestedprice" name="suggestedprice" readonly class="read" value="<?php echo $gallonPrice; ?>"> <br>
+  <input type="number" id="suggestedprice" name="suggestedprice" readonly class="read" value="<?php if (isset($gal)) {echo $gallonPrice;} ?>"> <br>
   </div>
 
   <div class="entry">
   <label for="total">Total Amount Due: $</label>
-  <input type="number" id="total" name="total" readonly class="read" value="<?php echo $total; ?>"> <br>
+  <input type="number" id="total" name="total" readonly class="read" value="<?php if (isset($gal)) {echo $total;}; ?>"> <br>
   </div>
 
   <div class="submitbutton">
