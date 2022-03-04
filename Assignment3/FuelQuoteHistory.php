@@ -1,12 +1,29 @@
 <?php
    // session_start(); //start session
-    $array = array("okay street 51233", "Houston bar street 230", "austin road 2933");
-    $gallonPrice =  (mt_rand(-88888, 999999) / 10);
-    $gallonRequested =  (mt_rand(0, 999999) / 10);
-    $total = (mt_rand(0, 95699999) / 10);
-    $gallonPrice =  (mt_rand(0, 999999) / 10);
-    $total =   (mt_rand(0, 95699999) / 10);
-    $randomDate = date("Y M d");
+   require_once 'vendor/autoload.php';
+   $faker = Faker\Factory::create();
+   //connect to database and retrieve history data for user
+
+    $arrayGal = array();
+    $arrayTotal = array();
+    $arrayDate = array();
+    $gallonPrice =  $faker->randomFloat(2, 1);
+
+    $loopNum = $faker->numberBetween(0, 100);
+    for ($i = 0; $i < $loopNum; $i++)
+    {
+        $value =  $faker->randomFloat(0, 1);
+        $arrayGal[] = $value;
+        $arrayTotal[] = $gallonPrice * $value;
+        $arrayDate[] = $faker->date($format = 'm-d-Y');
+    }
+
+    $address = $faker->address;
+    //$gallonRequested =  $faker->randomFloat(0, 1);
+    //$total = $gallonRequested * $gallonPrice;
+
+    //$randomDate = date("Y M d");
+   // $randomDate = 
 
 ?>
 
@@ -40,9 +57,9 @@
           <th>Total Amount Due $</th>
         </tr>
         <?php 
-            foreach($array as $value)
+            for ($i = 0; $i < $loopNum; $i++)
             {
-                echo "<tr><td>" . $gallonRequested . "</td><td>" . $value . "</td><td>" . $randomDate . "</td><td>" . $gallonPrice . "</td><td>" . $total ."</td></tr>";
+                echo "<tr><td>" . $arrayGal[$i] . "</td><td>" . $address . "</td><td>" . $arrayDate[$i] . "</td><td>" . $gallonPrice . "</td><td>" . $arrayTotal[$i] ."</td></tr>";
             }
         ?>
         <!--<tr>
