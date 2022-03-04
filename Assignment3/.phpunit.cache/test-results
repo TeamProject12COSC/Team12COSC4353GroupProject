@@ -1,1 +1,1 @@
-{"version":1,"defects":{"FuelQuoteHistoryTest::testhistory":3},"times":{"QuoteFormTest::testInputs":0.004,"FuelQuoteHistoryTest::testhistory":0.046}}
+{"version":1,"defects":{"FuelQuoteHistoryTest::testhistory":3,"QuoteFormTest::testInputs":4},"times":{"QuoteFormTest::testInputs":0.043,"FuelQuoteHistoryTest::testhistory":0.014}}
