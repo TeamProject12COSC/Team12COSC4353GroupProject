@@ -3,27 +3,21 @@
    require_once 'vendor/autoload.php';
    $faker = Faker\Factory::create();
    //connect to database and retrieve history data for user
-
     $arrayGal = array();
     $arrayTotal = array();
     $arrayDate = array();
-    $gallonPrice =  $faker->randomFloat(2, 1);
+    $gallonPrice =  $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 10);
 
     $loopNum = $faker->numberBetween(0, 100);
     for ($i = 0; $i < $loopNum; $i++)
     {
-        $value =  $faker->randomFloat(0, 1);
+        $value =  $faker->randomFloat($nbMaxDecimals = 0, $min = 1, $max = 10000000);
         $arrayGal[] = $value;
         $arrayTotal[] = $gallonPrice * $value;
         $arrayDate[] = $faker->date($format = 'm-d-Y');
     }
 
     $address = $faker->address;
-    //$gallonRequested =  $faker->randomFloat(0, 1);
-    //$total = $gallonRequested * $gallonPrice;
-
-    //$randomDate = date("Y M d");
-   // $randomDate = 
 
 ?>
 
