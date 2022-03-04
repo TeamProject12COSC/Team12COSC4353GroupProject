@@ -7,19 +7,29 @@ class Price {
     private $gallonsRequested;
     private $gallonsRequestedFactor;
     private $pricePerGallon;
-    function __construct() {
-        //connect to database and get values
-        $this->profitFactor = 10;
+    //constructor will receive parameters from the caller which receives parameters from database and form input
+    function __construct($location, $previousCustomer, $gallonsRequested, $gallonsRequestedFactor) {
+        $this->profitFactor = 0.1;
         $this->pricePerGallon = 1.5;
-        $this->location;
-        $this->previousCustomer;
-        $this->gallonsRequested;
-        $this->gallonsRequestedFactor;
+        $this->location = $location;
+        $this->previousCustomer = $previousCustomer;
+        $this->gallonsRequested = $gallonsRequested;
+        $this->gallonsRequestedFactor = $gallonsRequestedFactor;
     }
 
     function calculateMargin()
     {
         return ($this->pricePerGallon * ($this->location - $this->previousCustomer + $this->gallonsRequestedFactor + $this->profitFactor));
+    }
+
+    function calculateSuggestedPrice()
+    {
+        return ($this->calculateMargin() + 1.5);
+    }
+
+    function calculateTotal()
+    {
+        return ($this->gallonsRequested * $this->calculateSuggestedPrice());
     }
 }
 
