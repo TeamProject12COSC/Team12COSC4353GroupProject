@@ -6,15 +6,28 @@
  $faker = Faker\Factory::create();
  $address = $faker->address;
 
+//connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
         $gallonPrice =  $faker->randomFloat(2, 1);
         $total = $gal * $gallonPrice;
-    
     }
+
     if (isset($_POST["datepicker"]))
     {
       $date = $_POST["datepicker"];
+    }
+    if (isset($_POST["deliveryaddress"]))
+    {
+      $deliveryAddress = $_POST["deliveryaddress"];
+    }
+    if (isset($_POST["suggestedprice"]))
+    {
+      $suggestedPrice = $_POST["suggestedprice"];
+    }
+    if (isset($_POST["total"]))
+    {
+      $totalPrice = $_POST["total"];
     }
 
 
@@ -63,7 +76,7 @@
 
   <div class="entry">
   <label for="deliveryaddress" >Delivery Address:</label>
-  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php echo $address?>"><br> <!--$array[rand(0, count($array) - 1)];-->
+  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php echo $address?>"><br>
   </div>
 
   <div class="entry edit">
