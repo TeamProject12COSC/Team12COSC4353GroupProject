@@ -11,7 +11,7 @@ final class QuoteFormTest extends TestCase
         $_POST["datepicker"] = "2022-09-04";
         require_once "QuoteForm.php";
 
-        $this->assertNotNull($array);
+        $this->assertNotNull($address);
         $this->assertNotNull($date);
         $this->assertEquals($date, "2022-09-04");
 
