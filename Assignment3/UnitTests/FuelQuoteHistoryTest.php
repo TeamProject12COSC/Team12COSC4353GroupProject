@@ -11,7 +11,7 @@ final class FuelQuoteHistoryTest extends TestCase
         require_once "FuelQuoteHistory.php";
 
         $this->assertGreaterThan(0, $gallonPrice);
-        $this->assertGreaterThan(0, $total);
+        $this->assertGreaterThan(0, $arrayTotal[0]);
 
     
     }
