@@ -11,6 +11,7 @@ final class PriceTest extends TestCase
 
         $price = new Price(0.02, 0.01, 1500, 0.02);
         $this->assertEquals($price->calculateTotal(), 2542.5);
+        $this->assertIsNumeric($price->calculateTotal(), "This value is not numeric");
     }
 
 }
