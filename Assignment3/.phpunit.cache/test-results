@@ -1,1 +1,1 @@
-{"version":1,"defects":{"FuelQuoteHistoryTest::testhistory":3,"QuoteFormTest::testInputs":4,"PriceTest::testPriceClass":3},"times":{"QuoteFormTest::testInputs":0.046,"FuelQuoteHistoryTest::testhistory":0.011,"PriceTest::testPriceClass":0.002}}
+{"version":1,"defects":{"FuelQuoteHistoryTest::testhistory":3,"QuoteFormTest::testInputs":4,"PriceTest::testPriceClass":3},"times":{"QuoteFormTest::testInputs":0.039,"FuelQuoteHistoryTest::testhistory":0.009,"PriceTest::testPriceClass":0.003}}
