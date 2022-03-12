@@ -1,34 +1,43 @@
 <?php //profile class
 class Profile {
-
-    private $profitFactor;
-    private $location;
-    private $previousCustomer;
-    private $gallonsRequested;
-    private $gallonsRequestedFactor;
-    private $pricePerGallon;
+    //profile variables
+    private $firstName;
+    private $lastName;
+    private $address1;
+    private $address2;
+    private $city;
+    private $state;
+    private $zipCode
     //constructor will receive parameters from the caller which receives parameters from database and form input
-    function __construct($location, $previousCustomer, $gallonsRequested, $gallonsRequestedFactor) {
-        $this->profitFactor = 0.1;
-        $this->pricePerGallon = 1.5;
-        $this->location = $location;
-        $this->previousCustomer = $previousCustomer;
-        $this->gallonsRequested = $gallonsRequested;
-        $this->gallonsRequestedFactor = $gallonsRequestedFactor;
+    function __construct($firstName, $lastName, $address1, $address2, $city, $state, $zipCode) {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->address1 = $address1;
+        $this->address2 = $address2;
+        $this->city = $city;
+        $this->state = $state;
+        $this->zipCode = $zipCode;
     }
 
-    function get()
-    {
-        return ($this->pricePerGallon * ($this->location - $this->previousCustomer + $this->gallonsRequestedFactor + $this->profitFactor));
+    function getFirstName() {
+        return $this->firstName;
     }
-
-    function calculateSuggestedPrice()
-    {
-        return ($this->calculateMargin() + 1.5);
+    function getLastName() {
+        return $this->lastName;
     }
-
-    function calculateTotal()
-    {
-        return ($this->gallonsRequested * $this->calculateSuggestedPrice());
+    function getAddress1() {
+        return $this->address1;
+    }
+    function getFirstName() {
+        return $this->address2;
+    }
+    function getCity() {
+        return $this->city;
+    }
+    function getState() {
+        return $this->state;
+    }
+    function getZipCode() {
+        return $this->zipCode;
     }
 }
