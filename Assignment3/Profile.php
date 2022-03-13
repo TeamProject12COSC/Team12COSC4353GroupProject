@@ -7,7 +7,7 @@ class Profile {
     private $address2;
     private $city;
     private $state;
-    private $zipCode
+    private $zipCode;
     //constructor will receive parameters from the caller which receives parameters from database and form input
     function __construct($firstName, $lastName, $address1, $address2, $city, $state, $zipCode) {
         $this->firstName = $firstName;
