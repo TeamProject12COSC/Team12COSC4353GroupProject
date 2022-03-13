@@ -56,27 +56,6 @@
                 echo "<tr><td>" . $arrayGal[$i] . "</td><td>" . $address . "</td><td>" . $arrayDate[$i] . "</td><td>" . $gallonPrice . "</td><td>" . $arrayTotal[$i] ."</td></tr>";
             }
         ?>
-        <!--<tr>
-            <td>1400</td>
-            <td>DeliverThis to 38 Houston, Texas, 77330</td>
-            <td>02/15/2201</td>
-            <td>$53/gallon</td>
-            <td>$32223432</td>
-        </tr>        
-        <tr>
-            <td>1400</td>
-            <td>DeliverThis to 38 Houston, Texas, 77330</td>
-            <td>02/15/2201</td>
-            <td>$53/gallon</td>
-            <td>$32223432</td>
-        </tr>
-        <tr>
-            <td>1400</td>
-            <td>DeliverThis to 38 Houston, Texas, 77330</td>
-            <td>02/15/2201</td>
-            <td>$53/gallon</td>
-            <td>$32223432</td>
-        </tr>-->
     </table>      
 
 </body>
