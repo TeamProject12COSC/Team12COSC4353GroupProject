@@ -20,6 +20,8 @@
             <directory>./UnitTests/QuoteFormTest.php</directory>
             <directory>./UnitTests/FuelQuoteHistoryTest.php</directory>
             <directory>./UnitTests/PriceTest.php</directory>
+            <directory>./UnitTests/LoginTest.php</directory>
+            <directory>./UnitTests/RegisterTest.php</directory>
         </testsuite>
     </testsuites>
 
@@ -29,6 +31,8 @@
             <directory>./QuoteForm.php</directory>
             <directory>./FuelQuoteHistory.php</directory>
             <directory>./Price.php</directory>
+            <directory>./Login.php</directory>
+            <directory>./Register.php</directory>
         </include>
     </coverage>
 </phpunit>
