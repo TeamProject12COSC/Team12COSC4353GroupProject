@@ -2,7 +2,7 @@ function changeActive(e)//  referenced code to change active class from https://
 {
     document.querySelector('.active').classList.remove('active');
 
-        e.target.classList.add('active');
+        e.target.classList.add('active'); 
         console.log("changed active");
 
 }
