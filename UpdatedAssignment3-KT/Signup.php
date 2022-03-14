@@ -9,9 +9,9 @@ $address2 = '';
 $city;
 $state;
 $zipCode;
+
 $valid = false;
 $profile = new EditProfile();
-while(!$valid) {
     if (isset($_POST['submit'])) {
         if (isset($_POST["First Name"])) {
             $this->firstName = $_POST["First Name"];
@@ -37,7 +37,6 @@ while(!$valid) {
         $profile->assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
         $valid = $profile->isValid();
     }
-}
 if($valid) {
     header("Location: Profile.html");
 }
