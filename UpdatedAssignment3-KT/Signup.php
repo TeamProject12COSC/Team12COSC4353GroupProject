@@ -15,6 +15,7 @@ $city;
 $state;
 $zipCode;
 $valid = false;
+$profile = new EditProfile();
 while($valid) {
     if (isset($_POST['submit'])) {
         if (isset($_POST["First Name"])) {
@@ -40,7 +41,7 @@ while($valid) {
         }
     }
 }
-$profile = new EditProfile($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
+$profile->assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
 $valid = $profile->isValid();
 header("Location: Profile.html");
 ?>

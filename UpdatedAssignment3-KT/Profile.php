@@ -3,6 +3,7 @@
 include_once 'EditProfile.php';
 
 $profile = new EditProfile();
+$profile->pullValues();
 
 $firstName = $profile->getFirstName();
 $lastName = $profile->getLastName();
