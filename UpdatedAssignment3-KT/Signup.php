@@ -2,37 +2,31 @@
 
  include_once 'EditProfile.php';
 //connect to database to send information to database. prepare data to persist in DB
-$firstName;
-$lastName;
-$address1;
-$address2 = '';
-$city;
-$state;
-$zipCode;
+
 
 $valid = false;
 $profile = new EditProfile();
     if (isset($_POST['submit'])) {
         if (isset($_POST["First Name"])) {
-            $this->firstName = $_POST["First Name"];
+            $firstName = $_POST["First Name"];
         }
         if (isset($_POST["Last Name"])) {
-            $this->lastName = $_POST["Last Name"];
+            $lastName = $_POST["Last Name"];
         }
         if (isset($_POST["Address 1"])) {
-            $this->address1 = $_POST["Address 1"];
+            $address1 = $_POST["Address 1"];
         }
         if (isset($_POST["Address 2"])) {
-            $this->address2 = $_POST["Address 2"];
+            $address2 = $_POST["Address 2"];
         }
         if (isset($_POST["City"])) {
-            $this->city = $_POST["City"];
+            $city = $_POST["City"];
         }
         if (isset($_POST["State"])) {
-            $this->state = $_POST["State"];
+            $state = $_POST["State"];
         }
         if (isset($_POST["Zipcode"])) {
-            $this->zipCode = $_POST["Zipcode"];
+            $zipCode = $_POST["Zipcode"];
         }
         $profile->assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
         $valid = $profile->isValid();
