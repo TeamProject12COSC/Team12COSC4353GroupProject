@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 require_once 'vendor/autoload.php';
 
-final class QuoteFormTest extends TestCase
+final class QuoteFormTest extends TestCase 
 {
     public function testInputs(): void
     {
