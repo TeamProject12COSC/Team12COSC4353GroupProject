@@ -34,7 +34,7 @@
 <header>
     <div class="topnav" id="myTopnav" onclick="changeActive(event)">
         <a href="Logout.php">Logout</a>  
-        <a href="signup.html">Profile</a>
+        <a href="Signup.php">Profile</a>
         <a href="FuelQuoteHistory.php" class="active">Fuel Quote History</a>
         <a href="QuoteForm.php">Request Fuel Quote</a>
     </div>
