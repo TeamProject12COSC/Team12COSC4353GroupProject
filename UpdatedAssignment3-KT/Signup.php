@@ -133,7 +133,7 @@ if($valid) {
                     </select>
 
                     <label for="zip">Zipcode</label>
-                    <input type="text" id="zip" name="Zipcode" placeholder="Zipcode" minlength="5" maxlength="9"required>
+                    <input type="number" id="zip" name="Zipcode" placeholder="Zipcode" minlength="5" maxlength="9"required>
 
                     <input type="submit" value="Complete">
                 </form>
