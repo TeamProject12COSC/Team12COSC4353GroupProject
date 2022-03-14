@@ -1,3 +1,18 @@
+<?php
+
+include_once 'EditProfile.php';
+
+$profile = new EditProfile();
+
+$firstName = $profile->getFirstName();
+$lastName = $profile->getLastName();
+$address1 = $profile->getAddress1();
+$address2 = $profile->getAddress2();
+$city = $profile->getCity();
+$state = $profile->getState();
+$zipCode = $profile->getZipCode();
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,34 +36,34 @@
                 <table>
                     <tr>
                         <td>First Name</td>
-                        <td>Default</td>
+                        <td><?php echo $firstName?></td>
                     </tr>
                     <tr>
                         <td>Last Name</td>
-                        <td>Default</td>
+                        <td><?php echo $lastName?></td>
                     </tr>
                     <tr>
                         <td>Address 1</td>
-                        <td>Default</td>
+                        <td><?php echo $address1?></td>
                     </tr>
                     <tr>
                         <td>Address 2</td>
-                        <td>Default</td>
+                        <td><?php echo $address2?></td>
                     </tr>
                     <tr>
                         <td>City</td>
-                        <td>Default</td>
+                        <td><?php echo $city?></td>
                     </tr>
                     <tr>
                         <td>State</td>
-                        <td>Default</td>
+                        <td><?php echo $state?></td>
                     </tr>
                     <tr>
                         <td>Zipcode</td>
-                        <td>Default</td>
+                        <td><?php echo $zipCode?></td>
                     </tr>
                 </table>
-                <form action="Signup.html">
+                <form action="Signup.php">
                     <input type="submit" value="Edit">
                 </form>
             </div>
