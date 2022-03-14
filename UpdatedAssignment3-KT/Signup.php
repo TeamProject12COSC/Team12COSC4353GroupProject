@@ -1,3 +1,50 @@
+<?php
+
+ include_once 'EditProfile.php';
+ 
+ //connect to database and retrieve data to fill in form
+ $faker = Faker\Factory::create();
+ $address = $faker->address;
+
+//connect to database to send information to database. prepare data to persist in DB
+$firstName;
+$lastName;
+$address1;
+$address2 = '';
+$city;
+$state;
+$zipCode;
+$valid = false;
+while($valid) {
+    if (isset($_POST['submit'])) {
+        if (isset($_POST["First Name"])) {
+            $this->firstName = $_POST["First Name"];
+        }
+        if (isset($_POST["Last Name"])) {
+            $this->lastName = $_POST["Last Name"];
+        }
+        if (isset($_POST["Address 1"])) {
+            $this->address1 = $_POST["Address 1"];
+        }
+        if (isset($_POST["Address 2"])) {
+            $this->address2 = $_POST["Address 2"];
+        }
+        if (isset($_POST["City"])) {
+            $this->city = $_POST["City"];
+        }
+        if (isset($_POST["State"])) {
+            $this->state = $_POST["State"];
+        }
+        if (isset($_POST["Zipcode"])) {
+            $this->zipCode = $_POST["Zipcode"];
+        }
+    }
+}
+$profile = new EditProfile($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
+$valid = $profile->isValid());
+header("Location: Profile.html");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,10 +56,10 @@
     </head>
     <header>
      <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-        <a href="Logout.php">Logout</a>  
+        <a href="Login.html">Logout</a>  
         <a href="signup.html" class="active">Profile</a>
-        <a href="FuelQuoteHistory.php">Fuel Quote History</a>
-        <a href="QuoteForm.php">Request Fuel Quote</a>
+        <a href="FuelQuoteHistory.html">Fuel Quote History</a>
+        <a href="QuoteForm.html">Request Fuel Quote</a>
      </div>
     </header>
     <body>
@@ -20,22 +67,22 @@
             <div class="signup">
                 <form action="Profile.html">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="First Name" placeholder="First Name">
+                    <input type="text" id="fname" name="First Name" placeholder="First Name" maxlength="50" required>
 
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="Last Name" placeholder="Last Name">
+                    <input type="text" id="lname" name="Last Name" placeholder="Last Name" maxlength="50" required>
 
                     <label for="addy1">Address 1</label>
-                    <input type="text" id="addy1" name="Address 1" placeholder="Address 1">
+                    <input type="text" id="addy1" name="Address 1" placeholder="Address 1" maxlength="100" required>
 
                     <label for="addy2">Address 2</label>
-                    <input type="text" id="addy2" name="Address 2" placeholder="Address 2">
+                    <input type="text" id="addy2" name="Address 2" placeholder="Address 2" maxlength="100">
 
                     <label for="city">City</label>
-                    <input type="text" id="city" name="City" placeholder="City">
+                    <input type="text" id="city" name="City" placeholder="City" maxlength="100" required>
 
                     <label for="state">State</label>
-                    <select id="state" name="State">
+                    <select id="state" name="State" required>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -89,7 +136,7 @@
                     </select>
 
                     <label for="zip">Zipcode</label>
-                    <input type="text" id="zip" name="Zipcode" placeholder="Zipcode">
+                    <input type="text" id="zip" name="Zipcode" placeholder="Zipcode" minlength="5" maxlength="9"required>
 
                     <input type="submit" value="Complete">
                 </form>
