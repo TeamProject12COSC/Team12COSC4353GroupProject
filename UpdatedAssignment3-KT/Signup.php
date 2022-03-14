@@ -68,7 +68,7 @@ if($valid) {
                     <input type="text" id="addy1" name="Address 1" placeholder="Address 1" maxlength="100" required>
 
                     <label for="addy2">Address 2</label>
-                    <input type="text" id="addy2" name="Address 2" placeholder="Address 2" maxlength="100">
+                    <input type="text" id="addy2" name="Address 2" placeholder="Address 2" maxlength="100" optional>
 
                     <label for="city">City</label>
                     <input type="text" id="city" name="City" placeholder="City" maxlength="100" required>
