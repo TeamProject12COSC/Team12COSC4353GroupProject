@@ -27,7 +27,7 @@ class EditProfile {
         $this->state = $state;
         $this->zipCode = $zipCode;
     }
-    function isValid() [
+    function isValid() {
         $valid = true;
         if(empty($firstName)) {
             echo $firstName . ' is empty\n';
