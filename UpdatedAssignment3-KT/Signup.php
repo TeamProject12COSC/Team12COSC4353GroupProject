@@ -53,16 +53,16 @@ if($valid) {
     </head>
     <header>
      <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-        <a href="Login.html">Logout</a>  
+        <a href="Login.php">Logout</a>  
         <a href="Signup.php" class="active">Profile</a>
-        <a href="FuelQuoteHistory.html">Fuel Quote History</a>
-        <a href="QuoteForm.html">Request Fuel Quote</a>
+        <a href="FuelQuoteHistory.php">Fuel Quote History</a>
+        <a href="QuoteForm.php">Request Fuel Quote</a>
      </div>
     </header>
     <body>
         <section class="header">
             <div class="signup">
-                <form action="Profile.html">
+                <form action="Profile.php">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="First Name" placeholder="First Name" maxlength="50" required>
 
