@@ -22,6 +22,8 @@
             <directory>./UnitTests/PriceTest.php</directory>
             <directory>./UnitTests/LoginTest.php</directory>
             <directory>./UnitTests/RegisterTest.php</directory>
+			<directory>./UnitTests/ProfileTest.php</directory>
+			<directory>./UnitTests/SignupTest.php</directory>
         </testsuite>
     </testsuites>
 
@@ -33,6 +35,8 @@
             <directory>./Price.php</directory>
             <directory>./Login.php</directory>
             <directory>./Register.php</directory>
+			<directory>./Profile.php</directory>
+			<directory>./Signup.php</directory>
         </include>
     </coverage>
 </phpunit>
