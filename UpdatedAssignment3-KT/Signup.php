@@ -34,11 +34,13 @@ while(!$valid) {
         if (isset($_POST["Zipcode"])) {
             $this->zipCode = $_POST["Zipcode"];
         }
+        $profile->assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
+        $valid = $profile->isValid();
     }
-    $profile->assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
-    $valid = $profile->isValid();
 }
-header("Location: Profile.html");
+if($valid) {
+    header("Location: Profile.html");
+}
 ?>
 
 <!DOCTYPE html>
