@@ -60,7 +60,7 @@ error_reporting(0);
                 <input type="password" class="form__input" placeholder="Confirm Password" name="cpassword" required>
                 <div class="form__input-error-message"></div>
             </div>
-
+ 
             <!-- Sign Up Button -->
             <button class="form__button" name="submit">Create Account</button>
 
