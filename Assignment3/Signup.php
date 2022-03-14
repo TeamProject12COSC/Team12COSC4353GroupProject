@@ -1,6 +1,6 @@
 <script src="Signup.js"></script>
 <?php
-
+ 
  include_once 'EditProfile.php';
 //connect to database to send information to database. prepare data to persist in DB
 
