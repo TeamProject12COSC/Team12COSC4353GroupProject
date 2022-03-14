@@ -41,7 +41,7 @@ while($valid) {
     }
 }
 $profile = new EditProfile($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
-$valid = $profile->isValid());
+$valid = $profile->isValid();
 header("Location: Profile.html");
 ?>
 
