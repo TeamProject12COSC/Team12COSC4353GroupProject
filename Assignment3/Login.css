@@ -5,7 +5,7 @@
     text-decoration: none;
     box-sizing: border-box;
 } */
-body {
+body { 
     --color-primary: #009579;
     --color-primary-dark: #007f67;
     --color-secondary: #00027f;
