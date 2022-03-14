@@ -5,9 +5,9 @@ Login username and password hardcoded until database is ready
     password: password
 
 Code Coverage
-![code coverage](https://user-images.githubusercontent.com/64809002/158081988-a367ab74-ac95-4543-9f18-4a73bb485cea.PNG)
+![Code Coverage](https://user-images.githubusercontent.com/64809002/158104242-2fb74fc5-d028-48c7-92d8-87aa196de7d4.PNG)
 
 Unit Tests
 
-![unit tests](https://user-images.githubusercontent.com/64809002/158081989-1d38080b-4262-4da6-92b0-f79a3074638f.PNG)
+![Unit Tests](https://user-images.githubusercontent.com/64809002/158104243-a7394c54-92e6-498c-998a-dbc15b8fe7bb.PNG)
 
