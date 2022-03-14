@@ -1,5 +1,5 @@
 <?php //profile class
-class Profile {
+class EditProfile {
     //profile variables
     private $firstName;
     private $lastName;
