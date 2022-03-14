@@ -11,6 +11,8 @@ final class SignupTest extends TestCase
         $addressHolder = $faker->address;
         $dateHolder = $faker->date($format = 'Y-m-d');
 
+        $_POST['submit'] = true;
+
         $_POST["First Name"] = $faker->name();
         $_POST["Last Name"] = $faker->name();
         $_POST["Address 1"] = $faker->address();
