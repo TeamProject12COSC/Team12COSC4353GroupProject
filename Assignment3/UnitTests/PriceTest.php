@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-final class PriceTest extends TestCase
+final class PriceTest extends TestCase 
 {
     
     public function testPriceClass(): void
