@@ -9,6 +9,15 @@ class EditProfile {
     private $state;
     private $zipCode;
     //constructor will receive parameters from the caller which receives parameters from database and form input
+    function __construct() {
+        $this->firstName = 'fromtdatabase';
+        $this->lastName = 'fromtdatabase';
+        $this->address1 = 'fromtdatabase';
+        $this->address2 = 'fromtdatabase';
+        $this->city = 'fromtdatabase';
+        $this->state = 'fromtdatabase';
+        $this->zipCode = 'fromtdatabase';
+    }
     function __construct($firstName, $lastName, $address1, $address2, $city, $state, $zipCode) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
