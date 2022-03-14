@@ -38,7 +38,7 @@ $profile = new EditProfile();
         $valid = $profile->isValid();
     }
 if($valid) {
-    header("Location: Profile.html");
+    header("Location: Profile.php");
 }
 ?>
 
