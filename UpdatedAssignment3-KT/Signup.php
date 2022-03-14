@@ -1,3 +1,4 @@
+<script src="Signup.js"></script>
 <?php
 
  include_once 'EditProfile.php';
@@ -56,7 +57,7 @@ if($valid) {
     <body>
         <section class="header">
             <div class="signup">
-                <form action="Profile.php">
+                <form action="Profile.php" name="profile" onsubmit="return checkZipSize()">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="First Name" placeholder="First Name" maxlength="50" required>
 
