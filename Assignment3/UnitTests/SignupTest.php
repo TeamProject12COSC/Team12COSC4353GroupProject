@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 require_once 'vendor/autoload.php';
-
+ 
 final class SignupTest extends TestCase
 {
     public function testValue(): void
