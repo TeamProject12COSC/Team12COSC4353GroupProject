@@ -57,7 +57,7 @@ header("Location: Profile.html");
     <header>
      <div class="topnav" id="myTopnav" onclick="changeActive(event)">
         <a href="Login.html">Logout</a>  
-        <a href="signup.html" class="active">Profile</a>
+        <a href="Signup.php" class="active">Profile</a>
         <a href="FuelQuoteHistory.html">Fuel Quote History</a>
         <a href="QuoteForm.html">Request Fuel Quote</a>
      </div>
