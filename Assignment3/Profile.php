@@ -1,5 +1,5 @@
 <?php
-
+ 
 include_once 'EditProfile.php';
 
 $profile = new EditProfile();
