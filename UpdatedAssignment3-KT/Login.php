@@ -49,7 +49,7 @@ error_reporting(0);
 
                 if ($username == 'admin' && $password == 'password') {
                     if ($new) {
-                        header("Location: signup.html");
+                        header("Location: Signup.php");
                     } else {
                         header("Location: Profile.html");
                     }
