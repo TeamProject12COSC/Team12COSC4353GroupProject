@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 final class RegisterTest extends TestCase
-{
+{ 
     
     public function testregister(): void
     {
