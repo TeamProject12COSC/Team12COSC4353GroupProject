@@ -37,6 +37,7 @@
             <directory>./Register.php</directory>
 			<directory>./Profile.php</directory>
 			<directory>./Signup.php</directory>
+			<directory>./EditProfile.php</directory>
         </include>
     </coverage>
 </phpunit>
