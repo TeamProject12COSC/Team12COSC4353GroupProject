@@ -5,7 +5,7 @@
  //connect to database and retrieve data to fill in form
  $faker = Faker\Factory::create();
  $address = $faker->address;
-
+ 
 //connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
