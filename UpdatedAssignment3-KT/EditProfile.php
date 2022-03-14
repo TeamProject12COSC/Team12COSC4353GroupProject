@@ -96,7 +96,7 @@ class EditProfile {
     function getAddress1() {
         return $this->address1;
     }
-    function getFirstName() {
+    function getAddress2() {
         return $this->address2;
     }
     function getCity() {
