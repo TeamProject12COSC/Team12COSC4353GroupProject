@@ -6,3 +6,4 @@ function myFunction() { //set minimum date and also default date to current day
   function setDateMin() {
     document.getElementById('datepicker').min = new Date().toISOString().substring(0, 10);
   }
+ 
