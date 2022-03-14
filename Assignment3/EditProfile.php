@@ -85,7 +85,7 @@ class EditProfile {
             //echo $zipCode . ' is too long\n';
             $valid = false;
         }
-        return true;
+        return true; 
     }
     function getFirstName() {
         return $this->firstName;
