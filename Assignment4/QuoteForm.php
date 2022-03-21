@@ -1,5 +1,5 @@
 <?php 
-  // session_start();//start session 
+ session_start();//start session 
  require_once 'vendor/autoload.php';
  
  //connect to database and retrieve data to fill in form
@@ -31,6 +31,7 @@
 
   $sql = "CREATE TABLE FuelQuote (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(30) NOT NULL,
   gallonsRequested INT(255) NOT NULL,
   deliveryAddress VARCHAR(100) NOT NULL,
   deliveryDate DATE NOT NULL,
@@ -39,7 +40,7 @@
   )";
   
   if ($conn->query($sql) === TRUE) {
-    echo "Table MyGuests created successfully";
+    echo "Table created successfully";
   } else {
     //echo "Error creating table: " . $conn->error;
   }
@@ -73,8 +74,9 @@
     {
       $address = str_replace(',', '', $deliveryAddress);
       $totalPrice = $_POST["total"];
-      $sql = "INSERT INTO FuelQuote (gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
-      VALUES ('$gal', '$address' , '$date', '$gallonPrice', '$total')";
+      $username = $_SESSION["username"];
+      $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
+      VALUES ('$username', '$gal', '$address' , '$date', '$gallonPrice', '$total')";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
       } else {
