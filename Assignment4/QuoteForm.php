@@ -17,7 +17,7 @@
  }
  
  // Create database
- $db_selected = mysql_select_db('myDB', $conn);
+ $db_selected = $conn->select_db('myDB');
  if (!$db_selected)
  {
     $sql = "CREATE DATABASE myDB";
