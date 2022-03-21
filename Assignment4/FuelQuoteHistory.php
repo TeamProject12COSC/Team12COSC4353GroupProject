@@ -1,23 +1,28 @@
 <?php 
-   // session_start(); //start session
+   session_start(); //start session
    require_once 'vendor/autoload.php';
    $faker = Faker\Factory::create();
    //connect to database and retrieve history data for user
-    $arrayGal = array();
-    $arrayTotal = array();
-    $arrayDate = array();
-    $gallonPrice =  $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 10);
 
-    $loopNum = $faker->numberBetween(0, 100);
-    for ($i = 0; $i < $loopNum; $i++)
-    {
-        $value =  $faker->randomFloat($nbMaxDecimals = 0, $min = 1, $max = 10000000);
-        $arrayGal[] = $value;
-        $arrayTotal[] = $gallonPrice * $value;
-        $arrayDate[] = $faker->date($format = 'm-d-Y');
-    }
 
-    $address = $faker->address;
+
+
+   //connect to database and retrieve history data for user
+ //   $arrayGal = array();
+//    $arrayTotal = array();
+ //   $arrayDate = array();
+ //   $gallonPrice =  $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 10);
+
+  //  $loopNum = $faker->numberBetween(0, 100);
+   // for ($i = 0; $i < $loopNum; $i++)
+  //  {
+   //     $value =  $faker->randomFloat($nbMaxDecimals = 0, $min = 1, $max = 10000000);
+   //     $arrayGal[] = $value;
+    //    $arrayTotal[] = $gallonPrice * $value;
+  //      $arrayDate[] = $faker->date($format = 'm-d-Y');
+  //  }
+
+ //   $address = $faker->address;
 
 ?>
 
@@ -51,10 +56,38 @@
           <th>Total Amount Due $</th>
         </tr>
         <?php 
-            for ($i = 0; $i < $loopNum; $i++)
-            {
-                echo "<tr><td>" . $arrayGal[$i] . "</td><td>" . $address . "</td><td>" . $arrayDate[$i] . "</td><td>" . $gallonPrice . "</td><td>" . $arrayTotal[$i] ."</td></tr>";
+
+        //create database temp
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "myDB";
+        
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue FROM FuelQuote";
+
+        $result = $conn->query($sql);
+
+        
+        if ($result->num_rows > 0) {
+            $username = $_SESSION["username"];
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                if ($username == $row["username"])
+                {
+                  echo "<tr><td>" . $row["gallonsRequested"] . "</td><td>" . $row["deliveryAddress"] . "</td><td>" . $row["deliveryDate"] . "</td><td>" . $row["dollarsPerGallon"] . "</td><td>" . $row["totalDue"] ."</td></tr>";
+                }
+      
             }
+          }
+          $conn->close();
+
         ?>
     </table>      
 
