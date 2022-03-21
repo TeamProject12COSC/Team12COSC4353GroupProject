@@ -3,6 +3,34 @@
  require_once 'vendor/autoload.php';
  
  //connect to database and retrieve data to fill in form
+ 
+ //create database temp
+ $servername = "localhost";
+ $username = "root";
+ $password = "";
+ 
+ // Create connection
+ $conn = new mysqli($servername, $username, $password);
+ // Check connection
+ if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+ }
+ 
+ // Create database
+ $db_selected = mysql_select_db('myDB', $conn);
+ if (!$db_selected)
+ {
+    $sql = "CREATE DATABASE myDB";
+    if ($conn->query($sql) === TRUE) {
+      echo "Database created successfully";
+    } else {
+      echo "Error creating database: " . $conn->error;
+    }
+ }
+ 
+ $conn->close();
+ //create database temp
+
  $faker = Faker\Factory::create();
  $address = $faker->address;
  
