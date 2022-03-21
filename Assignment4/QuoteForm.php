@@ -27,8 +27,24 @@
       echo "Error creating database: " . $conn->error;
     }
  }
+   // sql to create table
+
+  $sql = "CREATE TABLE FuelQuote (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  gallonsRequested INT(255) NOT NULL,
+  deliveryAddress VARCHAR(100) NOT NULL,
+  deliveryDate DATE NOT NULL,
+  dollarsPerGallon DOUBLE(255, 2) UNSIGNED  NOT NULL,
+  totalDue DOUBLE(255, 2) UNSIGNED  NOT NULL
+  )";
+  
+  if ($conn->query($sql) === TRUE) {
+    echo "Table MyGuests created successfully";
+  } else {
+    //echo "Error creating table: " . $conn->error;
+  }
+
  
- $conn->close();
  //create database temp
 
  $faker = Faker\Factory::create();
@@ -55,9 +71,18 @@
     }
     if (isset($_POST["total"]))
     {
+      $address = str_replace(',', '', $deliveryAddress);
       $totalPrice = $_POST["total"];
+      $sql = "INSERT INTO FuelQuote (gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
+      VALUES ('$gal', '$address' , '$date', '$gallonPrice', '$total')";
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
     }
 
+    $conn->close();
 
 ?>
 
