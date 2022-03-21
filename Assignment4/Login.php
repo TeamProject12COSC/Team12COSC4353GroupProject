@@ -1,7 +1,7 @@
 <?php
 
 //include 'config.php';
-//session_start(); //commented out for unit testing purposes
+session_start(); //commented out for unit testing purposes
 error_reporting(0);
 ?>
  
@@ -48,6 +48,7 @@ error_reporting(0);
                 $new = true;
 
                 if ($username == 'admin' && $password == 'password') {
+                    $_SESSION["username"] = $username;
                     if ($new) {
                         header("Location: Signup.php");
                     } else {
