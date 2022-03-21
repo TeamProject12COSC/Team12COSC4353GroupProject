@@ -72,11 +72,11 @@
     }
     if (isset($_POST["total"]))
     {
-      $address = str_replace(',', '', $deliveryAddress);
+      //$address = str_replace(',', '', $deliveryAddress);
       $totalPrice = $_POST["total"];
       $username = $_SESSION["username"];
       $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
-      VALUES ('$username', '$gal', '$address' , '$date', '$gallonPrice', '$total')";
+      VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
       } else {
