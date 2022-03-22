@@ -8,45 +8,17 @@
  $servername = "localhost";
  $username = "root";
  $password = "";
+ $dbname = "myDB";
+
  
  // Create connection
- $conn = new mysqli($servername, $username, $password);
+ $conn = new mysqli($servername, $username, $password, $dbname);
  // Check connection
  if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
  }
  
- // Create database
- $db_selected = $conn->select_db('myDB');
- if (!$db_selected)
- {
-    $sql = "CREATE DATABASE myDB";
-    if ($conn->query($sql) === TRUE) {
-      echo "Database created successfully";
-    } else {
-      echo "Error creating database: " . $conn->error;
-    }
- }
-   // sql to create table
-
-  $sql = "CREATE TABLE FuelQuote (
-  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(30) NOT NULL,
-  gallonsRequested INT(255) NOT NULL,
-  deliveryAddress VARCHAR(100) NOT NULL,
-  deliveryDate DATE NOT NULL,
-  dollarsPerGallon DOUBLE(255, 2) UNSIGNED  NOT NULL,
-  totalDue DOUBLE(255, 2) UNSIGNED  NOT NULL
-  )";
-  
-  if ($conn->query($sql) === TRUE) {
-    echo "Table created successfully";
-  } else {
-    //echo "Error creating table: " . $conn->error;
-  }
-
  
- //create database temp
 
  $faker = Faker\Factory::create();
  $address = $faker->address;
@@ -76,11 +48,11 @@
       $totalPrice = $_POST["total"];
       $username = $_SESSION["username"];
       $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
-      VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
+      VALUES ('$username', '$gal', 'fromClientINformation Table' , '$date', '$gallonPrice', '$total')";
       if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+       // echo "New record created successfully";
       } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+       // echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
 
@@ -149,15 +121,17 @@
 
         $result = $conn->query($sql);
 
-        
+        echo "from client infomration table";
+
         if ($result->num_rows > 0) 
         {
             $username = $_SESSION["username"];
             // output data of each row
             $row = $result->fetch_assoc();
-                if ($username == $row["username"])
+
+               // if ($username == $row["username"])
                 {
-                  echo $row["deliveryAddress"];
+                  //echo $row["deliveryAddress"];
                 }
         }
           $conn->close();?>"><br>
