@@ -52,7 +52,7 @@ error_reporting(0);
                     if ($new) {
                         header("Location: Signup.php");
                     } else {
-                        header("Location: Profile.html");
+                        header("Location: Profile.php");
                     }
                 } else {
                     echo '<div class="form__message form__message--error">Username or Password is incorrect</div>';
