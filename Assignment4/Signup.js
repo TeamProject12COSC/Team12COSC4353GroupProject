@@ -6,7 +6,7 @@ function checkZipNum() {
   {
     if (isNaN(input[i]))
     {
-      alert("Only Digits 0-9 Allowed");
+      alert("Zipcode - Only Digits 0-9 Allowed");
       return false;
     }
   }
