@@ -5,8 +5,6 @@
    //connect to database and retrieve history data for user
 
 
-
-
    //connect to database and retrieve history data for user
  //   $arrayGal = array();
 //    $arrayTotal = array();
@@ -69,23 +67,7 @@
         if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
         }
-        ////create table
-        $sql = "CREATE TABLE FuelQuote (
-          id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-          username VARCHAR(30) NOT NULL,
-          gallonsRequested INT(255) NOT NULL,
-          deliveryAddress VARCHAR(100) NOT NULL,
-          deliveryDate DATE NOT NULL,
-          dollarsPerGallon DOUBLE(255, 2) UNSIGNED  NOT NULL,
-          totalDue DOUBLE(255, 2) UNSIGNED  NOT NULL
-          )";
-          
-          if ($conn->query($sql) === TRUE) {
-            //echo "Table created successfully";
-          } else {
-            //echo "Error creating table: " . $conn->error;
-          }
-          ////create table
+
         $sql = "SELECT username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue FROM FuelQuote";
 
         $result = $conn->query($sql);
