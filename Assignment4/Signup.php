@@ -65,7 +65,7 @@ if($valid) {
     <body>
         <section class="header">
             <div class="signup">
-                <form action="Profile.php" name="profile" method="post">
+                <form action="Profile.php" name="profile" method="post" onsubmit="return checkZipNum()">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="First Name" placeholder="First Name" maxlength="50" required>
 
