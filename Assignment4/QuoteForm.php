@@ -102,7 +102,7 @@
 <header>
     <div class="topnav" id="myTopnav" onclick="changeActive(event)">
         <a href="Logout.php">Logout</a>  
-        <a href="Signup.php">Profile</a>
+        <a href="Profile.php">Profile</a>
         <a href="FuelQuoteHistory.php">Fuel Quote History</a>
         <a href="QuoteForm.php" class="active">Request Fuel Quote</a>
     </div>
