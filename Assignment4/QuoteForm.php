@@ -131,7 +131,36 @@
 
   <div class="entry">
   <label for="deliveryaddress" >Delivery Address:</label>
-  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php echo $address?>"><br>
+  <input type="text" id="deliveryaddress" name="deliveryaddress" readonly class="read" value="<?php         //create database temp
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "myDB";
+        
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+       
+        //will change sql statement later when client information table is created
+        $sql = "SELECT username, deliveryAddress FROM FuelQuote";
+
+        $result = $conn->query($sql);
+
+        
+        if ($result->num_rows > 0) 
+        {
+            $username = $_SESSION["username"];
+            // output data of each row
+            $row = $result->fetch_assoc();
+                if ($username == $row["username"])
+                {
+                  echo $row["deliveryAddress"];
+                }
+        }
+          $conn->close();?>"><br>
   </div>
 
   <div class="entry edit">
