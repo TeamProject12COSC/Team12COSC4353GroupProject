@@ -49,9 +49,9 @@
       $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
       VALUES ('$username', '$gal', 'fromClientINformation Table' , '$date', '$gallonPrice', '$total')";
       if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        //echo "New record created successfully";
       } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+       // echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
 
@@ -150,7 +150,9 @@
   <label for="total">Total Amount Due: $</label>
   <input type="number" id="total" name="total" readonly class="read" value="<?php if (isset($gal)) {echo $total;}; ?>"> <br>
   </div>
-
+<!--
+  <input type="button" id="getQuote" name="getQuote" value="Get Quote">
+      -->
   <div class="submitbutton">
   <input type="submit" value="Submit" name="submit">
   </div>
