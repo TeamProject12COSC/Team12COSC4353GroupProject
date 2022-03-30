@@ -18,7 +18,6 @@
    die("Connection failed: " . $conn->connect_error);
  }
  
- 
 
  $faker = Faker\Factory::create();
  $address = $faker->address;
@@ -26,7 +25,7 @@
 //connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
-        $gallonPrice =  $faker->randomFloat(2, 1);
+        $gallonPrice =  2.20;
         $total = $gal * $gallonPrice;
     }
 
@@ -42,7 +41,7 @@
     {
       $suggestedPrice = $_POST["suggestedprice"];
     }
-    if (isset($_POST["total"]))
+    if (isset($_POST["submit"]))
     {
       //$address = str_replace(',', '', $deliveryAddress);
       $totalPrice = $_POST["total"];
@@ -50,9 +49,9 @@
       $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
       VALUES ('$username', '$gal', 'fromClientINformation Table' , '$date', '$gallonPrice', '$total')";
       if ($conn->query($sql) === TRUE) {
-       // echo "New record created successfully";
+        echo "New record created successfully";
       } else {
-       // echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
 
@@ -97,7 +96,7 @@
   
   <div class="entry edit">
   <label for="gallons">Gallons Requested:</label>
-  <input type="number" id="gallons" name="gallons" min="1" required onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" value="<?php if (isset($gal)){ echo $gal;}?>"
+  <input type="number" id="gallons" name="gallons" min="1" max="500000000000" required onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" value="<?php if (isset($gal)){ echo $gal;}?>"
   > <br><!--referenced code to not allow user to type in "e, +, -" characters https://stackoverflow.com/questions/31706611/why-does-the-html-input-with-type-number-allow-the-letter-e-to-be-entered-in/31706796-->
   </div>
 
@@ -153,7 +152,7 @@
   </div>
 
   <div class="submitbutton">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" name="submit">
   </div>
 </form>
 </div>
