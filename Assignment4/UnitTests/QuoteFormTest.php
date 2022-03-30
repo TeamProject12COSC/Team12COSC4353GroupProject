@@ -9,7 +9,9 @@ final class QuoteFormTest extends TestCase
     {
         $faker = Faker\Factory::create();
         $addressHolder = $faker->address;
+        $_SESSION["username"] = "admin";
         $dateHolder = $faker->date($format = 'Y-m-d');
+        $_POST["submit"] = true;
         $_POST["gallons"] = $faker->randomFloat($nbMaxDecimals = 0, $min = 1, $max = 10000000);
         $_POST["datepicker"] = $dateHolder;
         $_POST["deliveryaddress"] = $addressHolder;
