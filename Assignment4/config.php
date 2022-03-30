@@ -12,6 +12,7 @@ if(!$conn){
 
 // Create database
 $db_selected = $conn->select_db('myDB');
+$exists = false;
 if (!$db_selected)
 {
    $sql = "CREATE DATABASE myDB";
@@ -20,6 +21,7 @@ if (!$db_selected)
    } else {
    //  echo "Error creating database: " . $conn->error;
    }
+   $exists = true;
 }
 $conn->close();
 
@@ -33,6 +35,8 @@ $conn = mysqli_connect($server, $user, $pass, $db);
 if(!$conn){
     die("<script>alert('Failed to connect to server')</script>");
 }
+if ($exists)
+{
    // sql to create FuelQuote Table
    $sql = "CREATE TABLE FuelQuote (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -48,6 +52,7 @@ if(!$conn){
     } else {
       //echo "Error creating table: " . $conn->error;
     }
+  }
 
     $conn->close();
 ?>
