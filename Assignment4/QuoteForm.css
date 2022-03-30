@@ -36,7 +36,7 @@ input[type=submit] {
   font-size: 20px;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, input[type=button]:hover {
   background-color: #45a049;
 }
 
@@ -67,3 +67,15 @@ input{
 label {
   font-size: 20px;
 } 
+
+input[type=button] {
+  width: 100%;
+  background-color: #4CAF50 !important;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+}
