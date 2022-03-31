@@ -25,7 +25,7 @@
 //connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
-        $gallonPrice =  2.20;
+        $gallonPrice =  mt_rand(2.5, 70) / 10;
         $total = $gal * $gallonPrice;
     }
 
