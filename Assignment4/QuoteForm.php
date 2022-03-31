@@ -79,17 +79,6 @@
     </div>
 </header>
 
-<?php
-    if (!isset($_POST["datepicker"]))
-    {
-      echo '<body onload="myFunction()">';
-    }
-    else
-    {
-      echo '<body onload="setDateMin()">';
-    }
-?>
-
 
 <div class="container">
 <form method="post" action="QuoteForm.php">
@@ -138,7 +127,13 @@
 
   <div class="entry edit">
   <label for="datepicker">Delivery Date:</label>
-  <input type="date" id="datepicker" name="datepicker" value="<?php if (isset($date)){ echo $date;}?>"><br>
+  <input type="date" id="datepicker" name="datepicker" onclick="setDateMin()" required value=
+      "<?php 
+      if (isset($date))
+      { 
+        echo $date;
+      }
+      ?>"><br>
   </div>
 
   <div class="entry">
