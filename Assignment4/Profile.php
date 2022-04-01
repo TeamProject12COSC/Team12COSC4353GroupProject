@@ -1,17 +1,43 @@
 <?php
 session_start();
 
+//connect to database and retrieve data to fill in form
+
+//create database temp
+$servername = "localhost";
+$usernamedb = "root";
+$passworddb = "";
+$dbname = "myDB";
+
+
+// Create connection
+$conn = new mysqli($servername, $usernamedb, $passworddb, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$newnew = 0;
+$nametest = $_SESSION['username'];
+$sql = "UPDATE users SET new = '$newnew' WHERE username = '$nametest'";
+if ($conn->query($sql) === TRUE) {
+    //echo "New record created successfully";
+} else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+}
+$conn->close();
+
 $username = $_SESSION["username"];
 
-include_once 'EditProfile.php'; 
+include_once 'EditProfile.php';
 
-$firstName;
-$lastName;
-$address1;
-$address2;
-$city;
-$state;
-$zipCode;
+$firstName = "default";
+$lastName = "default";
+$address1 = "default";
+$address2 = "default";
+$city = "default";
+$state = "default";
+$zipCode = "default";
 
     $profile = new EditProfile($username);
 

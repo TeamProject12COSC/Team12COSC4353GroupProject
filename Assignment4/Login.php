@@ -1,10 +1,26 @@
 <?php
 
 include 'config.php';
-//session_start(); //commented out for unit testing purposes
+session_start(); //commented out for unit testing purposes
 error_reporting(0);
+
+//connect to database and retrieve data to fill in form
+
+//create database temp
+$servername = "localhost";
+$usernamedb = "root";
+$passworddb = "";
+$dbname = "myDB";
+
+
+// Create connection
+$conn = new mysqli($servername, $usernamedb, $passworddb, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
- 
+
 <!DOCTYPE html>
 <html>
 
@@ -18,38 +34,21 @@ error_reporting(0);
         <form class="form" id="login" action="" method="POST">
             <h1 class="form__title">Login</h1>
             <?php
-            //for mysql
-            // if (isset($_POST['submit'])) {
-            //     $username = $_POST['username'];
-            //     $password = md5($_POST['password']);
-
-            //     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-            //     $result = mysqli_query($conn, $sql);
-            //     if (mysqli_num_rows($result) > 0) {
-            //         $row = mysqli_fetch_assoc($result);
-            //         $_SESSION['username'] = $row['username'];
-
-            //         $sql = "SELECT new, username FROM users WHERE username = '$username'";
-            //         $result = mysqli_query($conn, $sql);
-            //         $new = $result->fetch_assoc();
-            //         if ($new["new"]) {
-            //             header("Location: signup.html");
-            //         } else {
-            //             header("Location: Profile.html");
-            //         }
-            //     } else {
-            //         echo '<div class="form__message form__message--error">Username or Password is incorrect</div>';
-            //     }
-            // }
-            //hardcoding
+            // for mysql
             if (isset($_POST['submit'])) {
                 $username = $_POST['username'];
-                $password = $_POST['password'];
-                $new = true;
+                $password = md5($_POST['password']);
 
-                if ($username == 'admin' && $password == 'password') {
-                    $_SESSION["username"] = $username;
-                    if ($new) {
+                $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $_SESSION['username'] = $row['username'];
+
+                    $sql = "SELECT new, username FROM users WHERE username = '$username'";
+                    $result = mysqli_query($conn, $sql);
+                    $new = $result->fetch_assoc();
+                    if ($new["new"]) {
                         header("Location: Signup.php");
                     } else {
                         header("Location: Profile.php");
@@ -58,6 +57,24 @@ error_reporting(0);
                     echo '<div class="form__message form__message--error">Username or Password is incorrect</div>';
                 }
             }
+            $conn->close();
+            //hardcoding
+            // if (isset($_POST['submit'])) {
+            //     $username = $_POST['username'];
+            //     $password = $_POST['password'];
+            //     $new = true;
+
+            //     if ($username == 'admin' && $password == 'password') {
+            //         $_SESSION["username"] = $username;
+            //         if ($new) {
+            //             header("Location: Signup.php");
+            //         } else {
+            //             header("Location: Profile.php");
+            //         }
+            //     } else {
+            //         echo '<div class="form__message form__message--error">Username or Password is incorrect</div>';
+            //     }
+            // }
             ?>
             <!-- <div class="form__message form__message--error">Username or Password is incorrect</div> -->
 

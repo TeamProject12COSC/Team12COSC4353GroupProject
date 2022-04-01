@@ -1,6 +1,22 @@
 <?php
-// include 'config.php';
+include 'config.php';
 error_reporting(0);
+
+ //connect to database and retrieve data to fill in form
+ 
+ //create database temp
+ $servername = "localhost";
+ $usernamedb = "root";
+ $passworddb = "";
+ $dbname = "myDB";
+
+ 
+ // Create connection
+ $conn = new mysqli($servername, $usernamedb, $passworddb, $dbname);
+ // Check connection
+ if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+ }
 ?>
 
 <!DOCTYPE html>
@@ -20,28 +36,29 @@ error_reporting(0);
                 $username = $_POST['username'];
                 $password = md5($_POST['password']);
                 $cpassword = md5($_POST['cpassword']);
-                $new = true;
+                $new = 1;
 
                 if ($password == $cpassword) {
-                    // $sql = "SELECT * FROM users WHERE username = '$username'";
-                    // $result = mysqli_query($conn, $sql);
-                    // if (mysqli_num_rows($result) > 0) {
-                    //     echo '<div class="form__message form__message--error">Username is already taken</div>';
-                    // } else {
-                    //     $sql = "INSERT INTO users (username, password, new) VALUES ('$username', '$password', $new)";
-                    //     $result = mysqli_query($conn, $sql);
-                    //     if ($result) {
-                    //         echo "<script>alert('Registration success')</script>";
-                    //         $username = "";
-                    //         $password = "";
-                    //     } else {
-                    //         echo "<script>alert('Something went wrong')</script>";
-                    //     }
-                    // }
+                    $sql = "SELECT * FROM users WHERE username = '$username'";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        echo '<div class="form__message form__message--error">Username is already taken</div>';
+                    } else {
+                        $sql = "INSERT INTO users (username, password, new) VALUES ('$username', '$password', '$new')";
+                        $result = mysqli_query($conn, $sql);
+                        if ($result) {
+                            echo "<script>alert('Registration success')</script>";
+                            $username = "";
+                            $password = "";
+                        } else {
+                            echo "<script>alert('Something went wrong')</script>";
+                        }
+                    }
                 } else {
                     echo '<div class="form__message form__message--error">Passwords do not match</div>';
                 }
             }
+            $conn->close();
             ?>
 
             <!-- Username -->
