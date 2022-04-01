@@ -53,7 +53,7 @@ if ($exists)
       //echo "Error creating table: " . $conn->error;
     }
 
-    // sql to create FuelQuote Table
+    // sql to create UserProfile Table
    $sql = "CREATE TABLE UserProfile (
     UserName VARCHAR(30) NOT NULL,
     FName VARCHAR(50) NOT NULL,
