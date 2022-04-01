@@ -47,7 +47,7 @@
       $totalPrice = $_POST["total"];
       $username = $_SESSION["username"];
       $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
-      VALUES ('$username', '$gal', 'fromClientINformation Table' , '$date', '$gallonPrice', '$total')";
+      VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
       if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";
       } else {
@@ -105,11 +105,11 @@
         }
        
         //will change sql statement later when client information table is created
-        $sql = "SELECT username, deliveryAddress FROM FuelQuote";
+        $sql = "SELECT UserName, Add1 FROM userprofile";
 
         $result = $conn->query($sql);
 
-        echo "from client infomration table";
+        //echo "from client infomration table";
 
         if ($result->num_rows > 0) 
         {
@@ -117,9 +117,9 @@
             // output data of each row
             $row = $result->fetch_assoc();
 
-               // if ($username == $row["username"])
+               if ($username == $row["UserName"])
                 {
-                  //echo $row["deliveryAddress"];
+                  echo $row["Add1"];
                 }
         }
           $conn->close();?>"><br>

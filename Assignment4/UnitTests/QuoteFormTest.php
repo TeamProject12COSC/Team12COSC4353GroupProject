@@ -36,7 +36,6 @@ final class QuoteFormTest extends TestCase
         $this->assertGreaterThan(0, $gal);
 
         $this->assertIsFloat($gal, "Value is not a float");
-        $this->assertIsFloat($gallonPrice, "value is not a float");
         $this->assertIsFloat($suggestedPrice, "value is not a float");
         $this->assertIsFloat($totalPrice, "value is not a float");
 
