@@ -23,6 +23,7 @@
             <directory>./UnitTests/LoginTest.php</directory>
             <directory>./UnitTests/RegisterTest.php</directory>
 			<directory>./UnitTests/ProfileTest.php</directory>
+			<directory>./UnitTests/EditProfileTest.php</directory>
         </testsuite>
     </testsuites>
 

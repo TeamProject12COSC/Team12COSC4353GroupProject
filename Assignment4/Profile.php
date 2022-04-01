@@ -3,7 +3,7 @@ session_start();
 
 $username = $_SESSION["username"];
 
-include_once 'EditProfile.php';
+include_once 'EditProfile.php'; 
 
 $firstName;
 $lastName;

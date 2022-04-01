@@ -1,5 +1,5 @@
 <?php 
-   session_start(); //start session
+   //session_start(); //start session
    require_once 'vendor/autoload.php';
    $faker = Faker\Factory::create();
    //connect to database and retrieve history data for user
