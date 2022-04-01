@@ -1,42 +1,4 @@
 <script src="Signup.js"></script>
-<?php
- 
- include_once 'EditProfile.php';
-//connect to database to send information to database. prepare data to persist in DB
-
-$username = $_SESSION["username"];
-
-$valid = false;
-$profile = new EditProfile($username);
-    if (isset($_POST['submit'])) {
-        if (isset($_POST["First Name"])) {
-            $firstName = $_POST["First Name"];
-        }
-        if (isset($_POST["Last Name"])) {
-            $lastName = $_POST["Last Name"];
-        }
-        if (isset($_POST["Address 1"])) {
-            $address1 = $_POST["Address 1"];
-        }
-        if (isset($_POST["Address 2"])) {
-            $address2 = $_POST["Address 2"];
-        }
-        if (isset($_POST["City"])) {
-            $city = $_POST["City"];
-        }
-        if (isset($_POST["State"])) {
-            $state = $_POST["State"];
-        }
-        if (isset($_POST["Zipcode"])) {
-            $zipCode = $_POST["Zipcode"];
-        }
-        $profile->assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
-        $valid = $profile->isValid();
-    }
-if($valid) {
-    header("Location: Profile.php");
-}
-?>
 
 <!DOCTYPE html>
 <html>
@@ -67,23 +29,23 @@ if($valid) {
         <section class="header">
             <div class="signup">
                 <form action="Profile.php" name="profile" method="post" onsubmit="return checkZipNum()">
-                    <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="First Name" placeholder="First Name" maxlength="50" required>
+                    <label for="FirstName">First Name</label>
+                    <input type="text" id="FirstName" name="FirstName" placeholder="FirstName" maxlength="50" required>
 
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="Last Name" placeholder="Last Name" maxlength="50" required>
+                    <label for="LastName">Last Name</label>
+                    <input type="text" id="LastName" name="LastName" placeholder="LastName" maxlength="50" required>
 
-                    <label for="addy1">Address 1</label>
-                    <input type="text" id="addy1" name="Address 1" placeholder="Address 1" maxlength="100" required>
+                    <label for="Address1">Address 1</label>
+                    <input type="text" id="Address1" name="Address1" placeholder="Address1" maxlength="100" required>
 
-                    <label for="addy2">Address 2</label>
-                    <input type="text" id="addy2" name="Address 2" placeholder="Address 2" maxlength="100" optional>
+                    <label for="Address2">Address 2</label>
+                    <input type="text" id="Address2" name="Address2" placeholder="Address2" maxlength="100" optional>
 
                     <label for="city">City</label>
-                    <input type="text" id="city" name="City" placeholder="City" maxlength="100" required>
+                    <input type="text" id="City" name="City" placeholder="City" maxlength="100" required>
 
                     <label for="state">State</label>
-                    <select id="state" name="State" required>
+                    <select id="State" name="State" required>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>

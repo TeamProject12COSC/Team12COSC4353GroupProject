@@ -12,8 +12,9 @@ class EditProfile {
     private $zipCode;
     //constructor will receive parameters from the caller which receives parameters from database and form input
     function __construct($uname) {
-        $this->$UNAME = $uname;
-
+        $this->UNAME = $uname;
+    }
+    function update() {
 
         //create database temp
         $servername = "localhost";
@@ -26,41 +27,27 @@ class EditProfile {
             die("Connection failed: " . $conn->connect_error);
         }
         
-        //if exsist do
-        if(1 = $conn->query("SELECT COUNT(1) FROM UserProfile WHERE UserName = $UNAME")){
-            $this->firstName = $conn->query("SELECT FName FROM UserProfile WHERE $UNAME LIKE UserName");
-            $this->lastName = $conn->query("SELECT LName FROM UserProfile WHERE $UNAME LIKE UserName");
-            $this->address1 = $conn->query("SELECT Add1 FROM UserProfile WHERE $UNAME LIKE UserName");
-            $this->address2 = $conn->query("SELECT Add2 FROM UserProfile WHERE $UNAME LIKE UserName");
-            $this->city = $conn->query("SELECT City FROM UserProfile WHERE $UNAME LIKE UserName");
-            $this->state = $conn->query("SELECT StateCode FROM UserProfile WHERE $UNAME LIKE UserName");
-            $this->zipCode = $conn->query("SELECT Zip FROM UserProfile WHERE $UNAME LIKE UserName");
-        }
-        else {
-            $sql = "INSERT INTO UserProfile (UserName, FName, LName, Add1, Add2, City, StateCode, Zip)
-            VALUES ('$username', '$FName', '$LName' , '$Add1', '$Add2', '$City', '$StateCode', '$Zip')";
-            if($conn->query($sql) === TRUE) {
-                //echo "New record created successfully";
-            } else {
-                // echo "Error: " . $sql . "<br>" . $conn->error;
+        $sql = "SELECT UserName, FName, LName, Add1, Add2, City, StateCode, Zip FROM UserProfile";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                if ($this->UNAME == $row["UserName"]) {
+                    $this->firstName = $row["FName"];
+                    $this->lastName = $row["LName"];
+                    $this->address1 = $row["Add1"];
+                    $this->address2 = $row["Add2"];
+                    $this->city = $row["City"];
+                    $this->state = $row["StateCode"];
+                    $this->zipCode = $row["Zip"];
+                }
+      
             }
         }
-
-        $this->firstName = $conn->query("SELECT FName FROM UserProfile WHERE $UNAME LIKE UserName");
-        $this->lastName = $conn->query("SELECT LName FROM UserProfile WHERE $UNAME LIKE UserName");
-        $this->address1 = $conn->query("SELECT Add1 FROM UserProfile WHERE $UNAME LIKE UserName");
-        $this->address2 = $conn->query("SELECT Add2 FROM UserProfile WHERE $UNAME LIKE UserName");
-        $this->city = $conn->query("SELECT City FROM UserProfile WHERE $UNAME LIKE UserName");
-        $this->state = $conn->query("SELECT StateCode FROM UserProfile WHERE $UNAME LIKE UserName");
-        $this->zipCode = $conn->query("SELECT Zip FROM UserProfile WHERE $UNAME LIKE UserName");
-
-        //else create
-
-
-
         $conn->close();
     }
-    function assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode) {
+    function create_entry($qwe, $fname, $lname, $add1, $add2, $city, $state, $zip) {
         //create database temp
         $servername = "localhost";
         $username = "root";
@@ -72,21 +59,46 @@ class EditProfile {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->address1 = $address1;
-        $this->address2 = $address2;
+
+        $exist = False;
+        $sql = "SELECT UserName FROM UserProfile";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                if ($this->UNAME == $row["UserName"])
+                {
+                    $exist = True;
+                }
+            }
+        }
+
+        if($exist) {
+            $sql = "UPDATE UserProfile SET FName = '$fname', LName = '$lname', Add1 = '$add1', Add2 = '$add2', City = '$city', StateCode = '$state', Zip = '$zip' WHERE UserName = '$this->UNAME'";
+            if($conn->query($sql) === TRUE) {
+                //echo "Entry updated successfully";
+            } else {
+                //echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+        else {
+            $sql = "INSERT INTO UserProfile (UserName, FName, LName, Add1, Add2, City, StateCode, Zip)
+            VALUES ('$this->UNAME', '$fname', '$lname' , '$add1', '$add2', '$city', '$state', '$zip')";
+            if($conn->query($sql) === TRUE) {
+                //echo "New record created successfully";
+            } else {
+                //echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+
+        
+        $this->firstName = $fname;
+        $this->lastName = $lname;
+        $this->address1 = $add1;
+        $this->address2 = $add2;
         $this->city = $city;
         $this->state = $state;
-        $this->zipCode = $zipCode;
-
-        $sql = "INSERT INTO UserProfile (UserName, FName, LName, Add1, Add2, City, StateCode, Zip)
-        VALUES ('$username', '$firstName', '$lastName' , '$address1', '$address2', '$city', '$state', '$zipCode') WHERE $UNAME LIKE UserName";
-        if($conn->query($sql) === TRUE) {
-            //echo "New record created successfully";
-        } else {
-            // echo "Error: " . $sql . "<br>" . $conn->error;
-        }
+        $this->zipCode = $zip;
 
         $conn->close();
     }

@@ -62,7 +62,7 @@ if ($exists)
     Add2 VARCHAR(100),
     City VARCHAR(100) NOT NULL,
     StateCode CHAR(2) NOT NULL,
-    Zip VARCHAR(9) NOT NULL,
+    Zip VARCHAR(9) NOT NULL
     )";
     if ($conn->query($sql) === TRUE) {
       //echo "Table created successfully";
