@@ -5,13 +5,13 @@ $username = $_SESSION["username"];
 
 include_once 'EditProfile.php';
 
-$firstName = "default";
-$lastName = "default";
-$address1 = "default";
-$address2 = "default";
-$city = "default";
-$state = "default";
-$zipCode = "default";
+$firstName;
+$lastName;
+$address1;
+$address2;
+$city;
+$state;
+$zipCode;
 
     $profile = new EditProfile($username);
 
