@@ -52,6 +52,23 @@ if ($exists)
     } else {
       //echo "Error creating table: " . $conn->error;
     }
+
+    // sql to create FuelQuote Table
+   $sql = "CREATE TABLE UserProfile (
+    UserName VARCHAR(30) NOT NULL,
+    FName VARCHAR(50) NOT NULL,
+    LName VARCHAR(50) NOT NULL,
+    Add1 VARCHAR(100) NOT NULL,
+    Add2 VARCHAR(100),
+    City VARCHAR(100) NOT NULL,
+    StateCode CHAR(2) NOT NULL,
+    Zip VARCHAR(9) NOT NULL,
+    )";
+    if ($conn->query($sql) === TRUE) {
+      //echo "Table created successfully";
+    } else {
+      //echo "Error creating table: " . $conn->error;
+    }
   }
 
     $conn->close();

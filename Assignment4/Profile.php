@@ -1,9 +1,9 @@
 <?php
+$username = $_SESSION["username"];
  
 include_once 'EditProfile.php';
 
-$profile = new EditProfile();
-$profile->pullValues();
+$profile = new EditProfile($username);
 
 $firstName = $profile->getFirstName();
 $lastName = $profile->getLastName();

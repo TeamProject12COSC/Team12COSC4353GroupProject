@@ -1,6 +1,8 @@
 <?php //profile class
 class EditProfile {
     //profile variables
+    private $UNAME;
+
     private $firstName;
     private $lastName;
     private $address1;
@@ -9,16 +11,67 @@ class EditProfile {
     private $state;
     private $zipCode;
     //constructor will receive parameters from the caller which receives parameters from database and form input
-    function pullValues() {
-        $this->firstName = 'fromtdatabase';
-        $this->lastName = 'fromtdatabase';
-        $this->address1 = 'fromtdatabase';
-        $this->address2 = 'fromtdatabase';
-        $this->city = 'fromtdatabase';
-        $this->state = 'fromtdatabase';
-        $this->zipCode = 'fromtdatabase';
+    function __construct($uname) {
+        $this->$UNAME = $uname;
+
+
+        //create database temp
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "myDB";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        
+        //if exsist do
+        if(1 = $conn->query("SELECT COUNT(1) FROM UserProfile WHERE UserName = $UNAME")){
+            $this->firstName = $conn->query("SELECT FName FROM UserProfile WHERE $UNAME LIKE UserName");
+            $this->lastName = $conn->query("SELECT LName FROM UserProfile WHERE $UNAME LIKE UserName");
+            $this->address1 = $conn->query("SELECT Add1 FROM UserProfile WHERE $UNAME LIKE UserName");
+            $this->address2 = $conn->query("SELECT Add2 FROM UserProfile WHERE $UNAME LIKE UserName");
+            $this->city = $conn->query("SELECT City FROM UserProfile WHERE $UNAME LIKE UserName");
+            $this->state = $conn->query("SELECT StateCode FROM UserProfile WHERE $UNAME LIKE UserName");
+            $this->zipCode = $conn->query("SELECT Zip FROM UserProfile WHERE $UNAME LIKE UserName");
+        }
+        else {
+            $sql = "INSERT INTO UserProfile (UserName, FName, LName, Add1, Add2, City, StateCode, Zip)
+            VALUES ('$username', '$FName', '$LName' , '$Add1', '$Add2', '$City', '$StateCode', '$Zip')";
+            if($conn->query($sql) === TRUE) {
+                //echo "New record created successfully";
+            } else {
+                // echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+
+        $this->firstName = $conn->query("SELECT FName FROM UserProfile WHERE $UNAME LIKE UserName");
+        $this->lastName = $conn->query("SELECT LName FROM UserProfile WHERE $UNAME LIKE UserName");
+        $this->address1 = $conn->query("SELECT Add1 FROM UserProfile WHERE $UNAME LIKE UserName");
+        $this->address2 = $conn->query("SELECT Add2 FROM UserProfile WHERE $UNAME LIKE UserName");
+        $this->city = $conn->query("SELECT City FROM UserProfile WHERE $UNAME LIKE UserName");
+        $this->state = $conn->query("SELECT StateCode FROM UserProfile WHERE $UNAME LIKE UserName");
+        $this->zipCode = $conn->query("SELECT Zip FROM UserProfile WHERE $UNAME LIKE UserName");
+
+        //else create
+
+
+
+        $conn->close();
     }
     function assignValues($firstName, $lastName, $address1, $address2, $city, $state, $zipCode) {
+        //create database temp
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "myDB";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->address1 = $address1;
@@ -26,6 +79,16 @@ class EditProfile {
         $this->city = $city;
         $this->state = $state;
         $this->zipCode = $zipCode;
+
+        $sql = "INSERT INTO UserProfile (UserName, FName, LName, Add1, Add2, City, StateCode, Zip)
+        VALUES ('$username', '$firstName', '$lastName' , '$address1', '$address2', '$city', '$state', '$zipCode') WHERE $UNAME LIKE UserName";
+        if($conn->query($sql) === TRUE) {
+            //echo "New record created successfully";
+        } else {
+            // echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
     }
     function isValid() {
         $valid = true;

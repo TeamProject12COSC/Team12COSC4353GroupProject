@@ -4,9 +4,10 @@
  include_once 'EditProfile.php';
 //connect to database to send information to database. prepare data to persist in DB
 
+$username = $_SESSION["username"];
 
 $valid = false;
-$profile = new EditProfile();
+$profile = new EditProfile($username);
     if (isset($_POST['submit'])) {
         if (isset($_POST["First Name"])) {
             $firstName = $_POST["First Name"];
