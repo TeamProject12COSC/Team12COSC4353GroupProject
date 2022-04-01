@@ -9,21 +9,6 @@
         <link rel="stylesheet" href="Nav.css">
         <script type="text/javascript" src="Nav.js"></script>
     </head>
-    <?php
-    if (isset($_POST["submit"]))
-    {
-        echo '
-        <header>
-        <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-            <a href="Login.php">Logout</a>  
-            <a href="Signup.php" class="active">Profile</a>
-            <a href="FuelQuoteHistory.php">Fuel Quote History</a>
-            <a href="QuoteForm.php">Request Fuel Quote</a>
-        </div>
-        </header>
-        ';
-    }
-    ?>
 
     <body>
         <section class="header">

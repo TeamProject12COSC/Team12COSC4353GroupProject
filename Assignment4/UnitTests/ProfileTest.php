@@ -10,7 +10,7 @@ final class ProfileTest extends TestCase
         $faker = Faker\Factory::create();
         $addressHolder = $faker->address;
         $dateHolder = $faker->date($format = 'Y-m-d');
-
+        $_SESSION["username"] = "admin";
         require_once "Profile.php";
 
         $this->assertNotNull($firstName);
