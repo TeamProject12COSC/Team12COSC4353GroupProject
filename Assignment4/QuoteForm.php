@@ -1,5 +1,5 @@
 <?php 
- session_start();//start session 
+//  session_start();//start session 
  require_once 'vendor/autoload.php';
  
  //connect to database and retrieve data to fill in form
@@ -25,7 +25,7 @@
 //connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
-        $gallonPrice =  mt_rand(2.5, 70) / 10;
+        $gallonPrice =  2;
         $total = $gal * $gallonPrice;
     }
 

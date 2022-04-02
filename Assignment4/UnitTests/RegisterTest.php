@@ -9,6 +9,7 @@ final class RegisterTest extends TestCase
     {
         $_POST['username'] = 'admin';
         $_POST['password'] = 'password';
+        $_POST['cpassword'] = 'password';
         $_POST['submit'] = true;
         require_once "Register.php";
 
@@ -17,7 +18,7 @@ final class RegisterTest extends TestCase
         $this->assertNotNull($cpassword);
 
         $this->assertNotNull($new);
-        $this->assertTrue($new);
+        $this->assertEquals($new, 1);
         // $this->assertEquals($password, $cpassword);
     }
 

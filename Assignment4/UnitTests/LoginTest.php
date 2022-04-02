@@ -16,10 +16,10 @@ final class LoginTest extends TestCase
 
         $this->assertNotNull($username);
         $this->assertNotNull($password);
-        $this->assertNotNull($new);
+        // $this->assertIsBool($new);
 
         $this->assertEquals($username, $_POST['username']);
-        $this->assertEquals($password, $_POST['password']);
+        $this->assertEquals($password, md5($_POST['password']));
     
     }
 

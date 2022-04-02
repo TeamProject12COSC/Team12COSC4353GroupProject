@@ -23,6 +23,8 @@ final class EditProfileTest extends TestCase
         $this->assertEquals($price->getState(), 'TX');
         $this->assertEquals($price->getZipCode(), '55555');
 
+        $price->isValid();
+
         $price->update();
     }
 }
