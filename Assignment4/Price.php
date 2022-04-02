@@ -1,4 +1,4 @@
-<?php //price class   
+<?php //price class    
 class Price {
 
     private $profitFactor;
