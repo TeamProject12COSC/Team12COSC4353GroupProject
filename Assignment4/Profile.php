@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 
 //connect to database and retrieve data to fill in form
 
