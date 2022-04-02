@@ -1,7 +1,7 @@
 <?php
 
 include 'config.php';
-// session_start(); //commented out for unit testing purposes
+session_start(); //commented out for unit testing purposes
 error_reporting(0);
 
 //connect to database and retrieve data to fill in form
