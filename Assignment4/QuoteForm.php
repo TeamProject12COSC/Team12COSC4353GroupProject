@@ -1,6 +1,6 @@
 <?php 
  session_start();//start session 
- require_once 'vendor/autoload.php';
+ require_once 'vendor/autoload.php'; 
  
  //connect to database and retrieve data to fill in form
  
