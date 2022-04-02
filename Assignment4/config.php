@@ -38,7 +38,7 @@ if ($exists) {
     // sql to create FuelQuote Table
     $sql = "CREATE TABLE FuelQuote (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(30) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     gallonsRequested BIGINT NOT NULL,
     deliveryAddress VARCHAR(100) NOT NULL,
     deliveryDate DATE NOT NULL,
@@ -53,7 +53,7 @@ if ($exists) {
 
     // sql to create UserProfile Table
     $sql = "CREATE TABLE UserProfile (
-    UserName VARCHAR(30) NOT NULL,
+    UserName VARCHAR(50) NOT NULL,
     FName VARCHAR(50) NOT NULL,
     LName VARCHAR(50) NOT NULL,
     Add1 VARCHAR(100) NOT NULL,
