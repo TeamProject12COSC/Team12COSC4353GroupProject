@@ -1,5 +1,5 @@
 <?php
- 
+// logout.php -kt
 session_start();
 session_destroy();
 
