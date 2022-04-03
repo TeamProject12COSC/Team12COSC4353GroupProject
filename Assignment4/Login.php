@@ -58,23 +58,7 @@ if ($conn->connect_error) {
                 }
             }
             $conn->close();
-            //hardcoding
-            // if (isset($_POST['submit'])) {
-            //     $username = $_POST['username'];
-            //     $password = $_POST['password'];
-            //     $new = true;
-
-            //     if ($username == 'admin' && $password == 'password') {
-            //         $_SESSION["username"] = $username;
-            //         if ($new) {
-            //             header("Location: Signup.php");
-            //         } else {
-            //             header("Location: Profile.php");
-            //         }
-            //     } else {
-            //         echo '<div class="form__message form__message--error">Username or Password is incorrect</div>';
-            //     }
-            // }
+   
             ?>
             <!-- <div class="form__message form__message--error">Username or Password is incorrect</div> -->
 
