@@ -103,7 +103,6 @@
         if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
         }
-       
         //will change sql statement later when client information table is created
         $sql = "SELECT UserName, Add1 FROM userprofile";
 
@@ -115,12 +114,12 @@
         {
             $username = $_SESSION["username"];
             // output data of each row
-            $row = $result->fetch_assoc();
-
+            while($row = $result->fetch_assoc()) {
                if ($username == $row["UserName"])
                 {
                   echo $row["Add1"];
                 }
+            }
         }
           $conn->close();?>"><br>
   </div>
