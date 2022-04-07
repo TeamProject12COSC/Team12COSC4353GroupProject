@@ -99,6 +99,7 @@
     </div>
 </header>
 
+<body>
   <?php
       //connect to database and retrieve data to fill in form
     $servername = "localhost";
