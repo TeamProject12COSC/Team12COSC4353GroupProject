@@ -2,26 +2,8 @@
  session_start();//start session 
  require_once 'vendor/autoload.php'; 
  
- //connect to database and retrieve data to fill in form
- 
- //create database temp
- $servername = "localhost";
- $username = "root";
- $password = "";
- $dbname = "myDB";
 
- 
- // Create connection
- $conn = new mysqli($servername, $username, $password, $dbname);
- // Check connection
- if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
- }
- 
 
- $faker = Faker\Factory::create();
- $address = $faker->address;
- 
 //connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
         $gal = $_POST["gallons"];
@@ -41,21 +23,20 @@
     {
       $suggestedPrice = $_POST["suggestedprice"];
     }
-    if (isset($_POST["submit"]))
-    {
-      //$address = str_replace(',', '', $deliveryAddress);
-      $totalPrice = $_POST["total"];
-      $username = $_SESSION["username"];
-      $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
-      VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
-      if ($conn->query($sql) === TRUE) {
+    // if (isset($_POST["submit"]))
+    // {
+      // $totalPrice = $_POST["total"];
+      // $username = $_SESSION["username"];
+      // $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
+      // VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
+      // if ($conn->query($sql) === TRUE) {
+        // echo "Quote Submitted";
         //echo "New record created successfully";
-      } else {
+      // } else {
        // echo "Error: " . $sql . "<br>" . $conn->error;
-      }
-    }
+      // }
+    // }
 
-    $conn->close();
 
 ?>
 
@@ -78,6 +59,45 @@
         <a href="QuoteForm.php" class="active">Request Fuel Quote</a>
     </div>
 </header>
+
+  <?php
+      //connect to database and retrieve data to fill in form
+    
+    //create database temp
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "myDB";
+
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+
+  if (isset($_POST["submit"]))
+  {
+    //$address = str_replace(',', '', $deliveryAddress);
+    $totalPrice = $_POST["total"];
+    $username = $_SESSION["username"];
+    $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
+    VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
+    if ($conn->query($sql) === TRUE) {
+      echo "<div class='submissionSuccess'>
+              Quote Submitted!
+            </div>";
+      //echo "New record created successfully";
+    } else {
+     // echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+  }
+
+
+  $conn->close();
+
+  ?>
 
 
 <div class="container">
@@ -144,11 +164,11 @@
   <label for="total">Total Amount Due: $</label>
   <input type="number" id="total" name="total" readonly class="read" value="<?php if (isset($gal)) {echo $total;}; ?>"> <br>
   </div>
-<!--
-  <input type="button" id="getQuote" name="getQuote" value="Get Quote">
-      -->
+
+  <input type="submit" name="getQuote" value="Get Quote">
+
   <div class="submitbutton">
-  <input type="submit" value="Submit" name="submit">
+  <input type="submit" name="submit" value="Submit Quote" >
   </div>
 </form>
 </div>
