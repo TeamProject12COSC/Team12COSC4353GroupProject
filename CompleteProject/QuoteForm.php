@@ -208,10 +208,10 @@
   <input type="number" id="total" name="total" readonly class="read" value="<?php if (isset($gal)) {echo $total;}; ?>"> <br>
   </div>
 
-  <input type="submit" name="getQuote" value="Get Quote">
+  <input type="submit" id="getQuote" name="getQuote" value="Get Quote">
 
   <div class="submitbutton">
-  <input type="submit" name="submit" value="Submit Quote" >
+  <input type="submit" id="submit" name="submit" value="Submit Quote" >
   </div>
 </form>
 </div>
