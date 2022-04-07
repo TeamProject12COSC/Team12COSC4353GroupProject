@@ -24,7 +24,7 @@ class Price {
 
     function calculateSuggestedPrice()
     {
-        return ($this->calculateMargin() + 1.5);
+        return ($this->calculateMargin() + $this->pricePerGallon);
     }
 
     function calculateTotal()

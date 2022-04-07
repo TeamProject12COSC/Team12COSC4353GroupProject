@@ -1,14 +1,65 @@
 <?php 
  session_start();//start session 
  require_once 'vendor/autoload.php'; 
+ require_once 'Price.php';
  
 
 
 //connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
-        $gal = $_POST["gallons"];
-        $gallonPrice =  2;
-        $total = $gal * $gallonPrice;
+      $gal = $_POST["gallons"];
+
+    //connect to database and retrieve data to fill in form
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "myDB";
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    $username = $_SESSION["username"];
+    $sql = "SELECT StateCode FROM userprofile WHERE UserName='$username'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+    {
+      $row = $result->fetch_assoc();
+      if ($row["StateCode"] == "TX")
+      {
+        $state = 0.02;
+      }
+      else
+      {
+        $state = 0.04;
+      }
+    }
+    $sql = "SELECT gallonsRequested FROM FuelQuote WHERE UserName='$username'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+    {
+      $history = 0.01;
+    }
+    else
+    {
+      $history = 0;
+    }
+    if ($gal >= 1000)
+    {
+      $gallonsRequestedFactor = 0.02;
+    }
+    else
+    {
+      $gallonsRequestedFactor = 0.03;
+    }
+
+    $price = new Price($state, $history, $gal, $gallonsRequestedFactor);
+    $gallonPrice =  $price->calculateSuggestedPrice();
+    $total = $price->calculateTotal();
+
+    $conn->close();
+
     }
 
     if (isset($_POST["datepicker"]))
@@ -23,19 +74,7 @@
     {
       $suggestedPrice = $_POST["suggestedprice"];
     }
-    // if (isset($_POST["submit"]))
-    // {
-      // $totalPrice = $_POST["total"];
-      // $username = $_SESSION["username"];
-      // $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
-      // VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
-      // if ($conn->query($sql) === TRUE) {
-        // echo "Quote Submitted";
-        //echo "New record created successfully";
-      // } else {
-       // echo "Error: " . $sql . "<br>" . $conn->error;
-      // }
-    // }
+
 
 
 ?>
@@ -62,8 +101,6 @@
 
   <?php
       //connect to database and retrieve data to fill in form
-    
-    //create database temp
     $servername = "localhost";
     $username = "root";
     $password = "";
