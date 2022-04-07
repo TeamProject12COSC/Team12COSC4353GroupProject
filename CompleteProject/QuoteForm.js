@@ -2,7 +2,9 @@
     document.getElementById('datepicker').min = new Date().toISOString().substring(0, 10);
   }
 
-
+  if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+  }
 window.onload = function() {
   if (document.getElementById("gallons").value == "" || document.getElementById("datepicker").value == "")
   {
