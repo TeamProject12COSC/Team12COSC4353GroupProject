@@ -21,7 +21,6 @@ final class QuoteFormTest extends TestCase
 
         $this->assertNotNull($addressHolder);
         $this->assertNotNull($deliveryAddress);
-        $this->assertNotNull($address);
         $this->assertNotNull($suggestedPrice);
         $this->assertNotNull($totalPrice);
         $this->assertNotNull($dateHolder);
