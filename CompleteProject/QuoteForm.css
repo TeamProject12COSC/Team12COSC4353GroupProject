@@ -118,3 +118,9 @@ input[type=button] {
   left:8px;
   top:20px;
 }
+
+input[type="submit"]:disabled {
+  background: #b8b8b8 !important;
+  color: black;
+  cursor: not-allowed;
+}
