@@ -189,7 +189,7 @@
 
   <div class="entry edit">
   <label for="datepicker">Delivery Date:</label>
-  <input type="date" id="datepicker" name="datepicker" onclick="setDateMin()" required value=
+  <input type="date" id="datepicker" name="datepicker" max='9999-12-30' onclick="setDateMin()" required value=
       "<?php 
       if (isset($date))
       { 
