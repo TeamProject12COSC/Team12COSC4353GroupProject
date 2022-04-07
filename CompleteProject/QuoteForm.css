@@ -83,10 +83,38 @@ input[type=button] {
 .submissionSuccess {
   border-radius: 5px;
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   color: #270;
   background-color: #DFF2BF;
   padding: 10px;
   text-align: center;
 
+}
+
+
+.checkmark {
+  display:inline-block;
+  width: 22px;
+  height:22px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+.checkmark_stem {
+  position: absolute;
+  width:3px;
+  height:9px;
+  background-color:#4CA;
+  left:11px;
+  top:14px;
+}
+
+.checkmark_kick {
+  position: absolute;
+  width:3px;
+  height:3px;
+  background-color:#4CA;
+  left:8px;
+  top:20px;
 }

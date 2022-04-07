@@ -85,7 +85,12 @@
     $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
     VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
     if ($conn->query($sql) === TRUE) {
-      echo "<div class='submissionSuccess'>
+      echo "
+            <div class='submissionSuccess'>
+                <span class='checkmark'>
+                <div class='checkmark_stem'></div>
+                <div class='checkmark_kick'></div>
+                </span>
               Quote Submitted!
             </div>";
       //echo "New record created successfully";
