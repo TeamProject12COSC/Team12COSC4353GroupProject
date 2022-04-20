@@ -8,6 +8,7 @@ final class QuoteFormTest extends TestCase
     public function testInputs(): void
     {
         $faker = Faker\Factory::create();
+        $state;
         $addressHolder = $faker->address;
         $_SESSION["username"] = "admin";
         $dateHolder = $faker->date($format = 'Y-m-d');
