@@ -3,6 +3,11 @@
    require_once 'vendor/autoload.php';
 
 
+   if (!isset($_SESSION["username"])) {
+    header("Location: Login.php");
+    die;
+  }  
+
 ?>
 
 <!DOCTYPE html> 
