@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if (!isset($_SESSION["username"])) {
+    header("Location: Login.php");
+    die;
+}  
 //connect to database and retrieve data to fill in form
 
 //create database temp

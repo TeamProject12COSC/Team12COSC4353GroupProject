@@ -1,5 +1,10 @@
 <script src="Signup.js"></script>
-
+<?php
+   if (!isset($_SESSION["username"])) {
+    header("Location: Login.php");
+    die;
+  }  
+?>
 <!DOCTYPE html>
 <html>
     <head>
