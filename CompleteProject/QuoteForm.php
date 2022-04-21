@@ -214,10 +214,10 @@
   <input type="number" id="total" name="total" readonly class="read" value="<?php if (isset($gal)) {echo $total;}; ?>"> <br>
   </div>
 
-  <input type="submit" id="getQuote" name="getQuote" value="Get Quote">
+  <input type="submit" id="getQuote" name="getQuote" value="Get Quote" <?php if(!isset($_POST['total'])) {echo 'disabled';} ?>>
 
   <div class="submitbutton">
-  <input type="submit" id="submit" name="submit" value="Submit Quote" >
+  <input type="submit" id="submit" name="submit" value="Submit Quote" <?php if(!isset($_POST['total'])) {echo 'disabled';} ?>>
   </div>
 </form>
 </div>
