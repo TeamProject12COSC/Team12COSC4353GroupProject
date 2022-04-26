@@ -27,8 +27,12 @@
       die("Connection failed: " . $conn->connect_error);
     }
     $username = htmlspecialchars($_SESSION["username"], ENT_QUOTES);
-    $sql = "SELECT StateCode FROM userprofile WHERE UserName='$username'";
-    $result = $conn->query($sql);
+    $sql = "SELECT StateCode FROM userprofile WHERE UserName=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+   // $result = $conn->query($sql);
+    $result = $stmt->get_result();
     if ($result->num_rows > 0)
     {
       $row = $result->fetch_assoc();
@@ -41,8 +45,15 @@
         $state = 0.04;
       }
     }
-    $sql = "SELECT gallonsRequested FROM FuelQuote WHERE UserName='$username'";
-    $result = $conn->query($sql);
+    $stmt->close();
+
+    $sql = "SELECT gallonsRequested FROM FuelQuote WHERE UserName=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+
+    //$result = $conn->query($sql);
+    $result = $stmt->get_result();
     if ($result->num_rows > 0)
     {
       $history = 0.01;
@@ -64,6 +75,7 @@
     $gallonPrice =  $price->calculateSuggestedPrice();
     $total = $price->calculateTotal();
 
+    $stmt->close();
     $conn->close();
 
     }
@@ -127,8 +139,12 @@
     $totalPrice = htmlspecialchars($_POST["total"], ENT_QUOTES);
     $username = htmlspecialchars($_SESSION["username"], ENT_QUOTES);
     $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
-    VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
-    if ($conn->query($sql) === TRUE) {
+    VALUES (?, ?, ? , ?, ?, ?)";
+    //VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sissdd", $username, $gal, $deliveryAddress, $date, $gallonPrice, $total);
+    //if ($conn->query($sql) === TRUE) {
+    if ($stmt->execute() === TRUE) {
       echo "
             <div class='submissionSuccess'>
                 <span class='checkmark'>
@@ -141,8 +157,8 @@
     } else {
      // echo "Error: " . $sql . "<br>" . $conn->error;
     }
+      $stmt->close();
   }
-
 
   $conn->close();
 
@@ -174,7 +190,7 @@
         }
         //will change sql statement later when client information table is created
         $sql = "SELECT UserName, Add1 FROM userprofile";
-
+        
         $result = $conn->query($sql);
 
         //echo "from client infomration table";
