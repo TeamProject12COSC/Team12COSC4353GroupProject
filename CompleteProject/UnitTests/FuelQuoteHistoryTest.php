@@ -7,6 +7,8 @@ final class FuelQuoteHistoryTest extends TestCase
     
     public function testhistory(): void
     {
+        $_SESSION["username"] = "admin";
+
         require_once 'vendor/autoload.php';
         $faker = Faker\Factory::create();
     $arrayGal = array();
