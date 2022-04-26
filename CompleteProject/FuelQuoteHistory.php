@@ -60,12 +60,12 @@
 
         
         if ($result->num_rows > 0) {
-            $username = $_SESSION["username"];
+            $username = htmlspecialchars($_SESSION["username"], ENT_QUOTES);
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                if ($username == $row["username"])
+                if ($username == htmlspecialchars($row["username"], ENT_QUOTES))
                 {
-                  echo "<tr><td>" . $row["gallonsRequested"] . "</td><td>" . $row["deliveryAddress"] . "</td><td>" . $row["deliveryDate"] . "</td><td>" . $row["dollarsPerGallon"] . "</td><td>" . $row["totalDue"] ."</td></tr>";
+                  echo "<tr><td>" . htmlspecialchars_decode(htmlspecialchars($row["gallonsRequested"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["deliveryAddress"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["deliveryDate"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["dollarsPerGallon"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["totalDue"], ENT_QUOTES)) ."</td></tr>";
                 }
       
             }
