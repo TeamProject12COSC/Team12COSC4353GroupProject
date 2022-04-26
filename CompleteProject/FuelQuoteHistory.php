@@ -65,7 +65,7 @@
             while($row = $result->fetch_assoc()) {
                 if ($username == htmlspecialchars($row["username"], ENT_QUOTES))
                 {
-                  echo "<tr><td>" . htmlspecialchars_decode(htmlspecialchars($row["gallonsRequested"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["deliveryAddress"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["deliveryDate"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["dollarsPerGallon"], ENT_QUOTES)) . "</td><td>" . htmlspecialchars_decode(htmlspecialchars($row["totalDue"], ENT_QUOTES)) ."</td></tr>";
+                  echo "<tr><td>" . htmlentities($row["gallonsRequested"]) . "</td><td>" . htmlentities($row["deliveryAddress"]) . "</td><td>" . htmlentities($row["deliveryDate"]) . "</td><td>" . htmlentities($row["dollarsPerGallon"]) . "</td><td>" . htmlentities($row["totalDue"]) ."</td></tr>";
                 }
       
             }

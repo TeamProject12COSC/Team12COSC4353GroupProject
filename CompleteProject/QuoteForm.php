@@ -13,7 +13,7 @@
 
 //connect to database to send information to database. prepare data to persist in DB
     if (isset($_POST["gallons"])) {
-      $gal = $_POST["gallons"];
+      $gal = htmlspecialchars($_POST["gallons"], ENT_QUOTES);
 
     //connect to database and retrieve data to fill in form
     $servername = "localhost";
@@ -26,13 +26,13 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $username = $_SESSION["username"];
+    $username = htmlspecialchars($_SESSION["username"], ENT_QUOTES);
     $sql = "SELECT StateCode FROM userprofile WHERE UserName='$username'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0)
     {
       $row = $result->fetch_assoc();
-      if ($row["StateCode"] == "TX")
+      if (htmlspecialchars($row["StateCode"], ENT_QUOTES) == "TX")
       {
         $state = 0.02;
       }
@@ -70,15 +70,15 @@
 
     if (isset($_POST["datepicker"]))
     {
-      $date = $_POST["datepicker"];
+      $date = htmlspecialchars($_POST["datepicker"], ENT_QUOTES);
     }
     if (isset($_POST["deliveryaddress"]))
     {
-      $deliveryAddress = $_POST["deliveryaddress"];
+      $deliveryAddress = htmlspecialchars($_POST["deliveryaddress"], ENT_QUOTES);
     }
     if (isset($_POST["suggestedprice"]))
     {
-      $suggestedPrice = $_POST["suggestedprice"];
+      $suggestedPrice = htmlspecialchars($_POST["suggestedprice"], ENT_QUOTES);
     }
 
 
@@ -124,8 +124,8 @@
   if (isset($_POST["submit"]))
   {
     //$address = str_replace(',', '', $deliveryAddress);
-    $totalPrice = $_POST["total"];
-    $username = $_SESSION["username"];
+    $totalPrice = htmlspecialchars($_POST["total"], ENT_QUOTES);
+    $username = htmlspecialchars($_SESSION["username"], ENT_QUOTES);
     $sql = "INSERT INTO FuelQuote (username, gallonsRequested, deliveryAddress, deliveryDate, dollarsPerGallon, totalDue)
     VALUES ('$username', '$gal', '$deliveryAddress' , '$date', '$gallonPrice', '$total')";
     if ($conn->query($sql) === TRUE) {
@@ -154,7 +154,7 @@
   
   <div class="entry edit">
   <label for="gallons">Gallons Requested:</label>
-  <input type="number" id="gallons" name="gallons" min="1" max="500000000000" required onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" value="<?php if (isset($gal)){ echo $gal;}?>"
+  <input type="number" id="gallons" name="gallons" min="1" max="500000000000" required onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" value="<?php if (isset($gal)){ echo htmlentities($gal);}?>"
   > <br><!--referenced code to not allow user to type in "e, +, -" characters https://stackoverflow.com/questions/31706611/why-does-the-html-input-with-type-number-allow-the-letter-e-to-be-entered-in/31706796-->
   </div>
 
@@ -181,12 +181,12 @@
 
         if ($result->num_rows > 0) 
         {
-            $username = $_SESSION["username"];
+            $username = htmlspecialchars($_SESSION["username"], ENT_QUOTES);
             // output data of each row
             while($row = $result->fetch_assoc()) {
-               if ($username == $row["UserName"])
+               if ($username == htmlspecialchars($row["UserName"], ENT_QUOTES))
                 {
-                  echo $row["Add1"];
+                  echo htmlentities($row["Add1"]);
                 }
             }
         }
@@ -199,7 +199,7 @@
       "<?php 
       if (isset($date))
       { 
-        echo $date;
+        echo htmlentities($date);
       }
       ?>"><br>
   </div>
