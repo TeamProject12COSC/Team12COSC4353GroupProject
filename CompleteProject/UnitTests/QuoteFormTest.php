@@ -13,7 +13,7 @@ final class QuoteFormTest extends TestCase
         $_SESSION["username"] = "admin";
         $dateHolder = $faker->date($format = 'Y-m-d');
         $_POST["submit"] = true;
-        $_POST["gallons"] = $faker->randomFloat($nbMaxDecimals = 0, $min = 1, $max = 10000000);
+        $_POST["gallons"] = $faker->randomNumber($nbDigits = 6);
         $_POST["datepicker"] = $dateHolder;
         $_POST["deliveryaddress"] = $addressHolder;
         $_POST["suggestedprice"] = $faker->randomFloat($nbMaxDecimals = 0, $min = 1, $max = 10000000);
@@ -26,6 +26,7 @@ final class QuoteFormTest extends TestCase
         $this->assertNotNull($totalPrice);
         $this->assertNotNull($dateHolder);
         $this->assertNotNull($date);
+        $this->assertNotNull($gal);
 
         $this->assertEquals($dateHolder, $_POST["datepicker"]);
         $this->assertEquals($addressHolder, $_POST["deliveryaddress"]);
@@ -35,9 +36,9 @@ final class QuoteFormTest extends TestCase
         $this->assertGreaterThan(0, $gallonPrice);
         $this->assertGreaterThan(0, $gal);
 
-        $this->assertIsFloat($gal, "Value is not a float");
-        $this->assertIsFloat($suggestedPrice, "value is not a float");
-        $this->assertIsFloat($totalPrice, "value is not a float");
+        $this->assertIsInt(intval($gal), "Value is not an Integer");
+        $this->assertIsFloat(floatval($suggestedPrice), "value is not a float");
+        $this->assertIsFloat(floatval($totalPrice), "value is not a float");
 
     }
 }
