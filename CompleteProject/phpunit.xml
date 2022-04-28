@@ -37,6 +37,7 @@
             <directory>./Register.php</directory>
 			<directory>./Profile.php</directory>
 			<directory>./EditProfile.php</directory>
+			<directory>./Nav.php</directory>
         </include>
     </coverage>
 </phpunit>
