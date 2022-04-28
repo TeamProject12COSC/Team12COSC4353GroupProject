@@ -103,19 +103,14 @@
   <link rel="stylesheet" href="QuoteForm.css">
   <link rel="stylesheet" href="Nav.css">
   <script type="text/javascript" src="QuoteForm.js"></script>
-  <script type="text/javascript" src="Nav.js"></script>
   <title>Website Name</title>
   <meta charset="UTF-8">
 </head>
 
-<header>
-    <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-        <a href="Logout.php">Logout</a>  
-        <a href="Profile.php">Profile</a>
-        <a href="FuelQuoteHistory.php">Fuel Quote History</a>
-        <a href="QuoteForm.php" class="active">Request Fuel Quote</a>
-    </div>
-</header>
+    <?php
+    $quoteform = true;
+    require_once 'Nav.php';
+    ?>
 
 <body>
   <?php
