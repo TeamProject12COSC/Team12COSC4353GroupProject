@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="Nav.css">  
+<?php
+if (!isset($_SESSION["username"])) {
+    header("Location: Login.php");
+  }
+?>
 
 <header>
     <div class="topnav" id="myTopnav">

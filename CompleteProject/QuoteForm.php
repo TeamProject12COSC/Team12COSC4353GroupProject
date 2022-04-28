@@ -3,7 +3,6 @@
  
  if (!isset($_SESSION["username"])) {
   header("Location: Login.php");
-  die;
   }
 
  require_once 'vendor/autoload.php'; 
