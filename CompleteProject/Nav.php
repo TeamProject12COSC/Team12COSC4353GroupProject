@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="Nav.css">  
 
 <header>
-    <div class="topnav" id="myTopnav" onclick="changeActive(event)">
+    <div class="topnav" id="myTopnav">
         <a href="Logout.php">Logout</a>  
         <a href="Profile.php" <?php if (isset($profile)) {echo "class='active'";} ?>>Profile</a>
         <a href="FuelQuoteHistory.php" <?php if (isset($fuelquotehistory)) {echo "class='active'";} ?>>Fuel Quote History</a>
