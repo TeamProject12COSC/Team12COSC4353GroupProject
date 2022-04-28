@@ -15,19 +15,14 @@
 <head>
   <link rel="stylesheet" href="Nav.css">
   <link rel="stylesheet" href="FuelQuoteHistory.css">
-  <script type="text/javascript" src="Nav.js"></script>
   <title>Website Name</title>
   <meta charset="UTF-8">
 </head>
 
-<header>
-    <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-        <a href="Logout.php">Logout</a>  
-        <a href="Profile.php">Profile</a>
-        <a href="FuelQuoteHistory.php" class="active">Fuel Quote History</a>
-        <a href="QuoteForm.php">Request Fuel Quote</a>
-    </div>
-</header>
+<?php
+    $fuelquotehistory = true;
+    require_once 'Nav.php';
+    ?>
 
 
 <body>
