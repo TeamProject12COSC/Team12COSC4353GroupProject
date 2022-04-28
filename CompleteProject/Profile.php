@@ -88,16 +88,13 @@ $zipCode = "default";
         <title>Profile</title>
         <link rel="stylesheet" href="Profile.css" />
         <link rel="stylesheet" href="Nav.css">
-        <script type="text/javascript" src="Nav.js"></script>
     </head>
-    <header>
-     <div class="topnav" id="myTopnav" onclick="changeActive(event)">
-        <a href="Logout.php">Logout</a>  
-        <a href="Profile.php" class="active">Profile</a>
-        <a href="FuelQuoteHistory.php">Fuel Quote History</a>
-        <a href="QuoteForm.php">Request Fuel Quote</a>
-     </div>
-    </header>
+
+    <?php
+    $profile = true;
+    require_once 'Nav.php';
+    ?>
+
     <body>
         <section class="header">
             <div class="profile">
