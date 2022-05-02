@@ -40,15 +40,21 @@ error_reporting(0);
                 $new = 1;
 
                 if ($password == $cpassword) {
-                    $sql = "SELECT * FROM users WHERE username = '$username'";
-                    $result = mysqli_query($conn, $sql);
+                    $sql = "SELECT * FROM users WHERE username = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $username);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
                     if (mysqli_num_rows($result) > 0) {
                         echo '<div class="form__message form__message--error">Username is already taken</div>';
                     } else {
-                        $sql = "INSERT INTO users (username, password, new) VALUES ('$username', '$password', '$new')";
-                        $result = mysqli_query($conn, $sql);
+                        $sql = "INSERT INTO users (username, password, new) VALUES (?, ?, ?)";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("ssi", $username, $password, $new);
+                        $result = $stmt->execute();
                         if ($result) {
-                            echo "<script>alert('Registration success')</script>";
+                            echo '<div class="form__message form__message--success">Registered Successfully!</div>';
                             $username = "";
                             $password = "";
                         } else {
@@ -94,3 +100,4 @@ error_reporting(0);
 </body>
 
 </html>
+

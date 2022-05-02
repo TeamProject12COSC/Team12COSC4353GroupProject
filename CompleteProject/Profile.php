@@ -20,9 +20,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$newnew = 0;
+$new = 0;
 $nametest = $_SESSION['username'];
-$sql = "UPDATE users SET new = '$newnew' WHERE username = '$nametest'";
+$sql = "UPDATE users SET new = '$new' WHERE username = '$nametest'";
 if ($conn->query($sql) === TRUE) {
     //echo "New record created successfully";
 } else {

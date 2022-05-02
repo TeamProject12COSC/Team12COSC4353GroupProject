@@ -39,14 +39,21 @@ if ($conn->connect_error) {
                 $username = $_POST['username'];
                 $password = md5($_POST['password']);
 
-                $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-                $result = mysqli_query($conn, $sql);
+                $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ss", $username, $password);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                
                 if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
+                    $row = $result->fetch_assoc();
                     $_SESSION['username'] = $row['username'];
 
-                    $sql = "SELECT new, username FROM users WHERE username = '$username'";
-                    $result = mysqli_query($conn, $sql);
+                    $sql = "SELECT new, username FROM users WHERE username = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $username);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
                     $new = $result->fetch_assoc();
                     if ($new["new"]) {
                         header("Location: Signup.php");
@@ -124,3 +131,4 @@ if ($conn->connect_error) {
 </body>
 
 </html>
+
