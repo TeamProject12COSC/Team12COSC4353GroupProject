@@ -78,9 +78,9 @@ class EditProfile {
 
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssssss", $fname,$lname,$add1,$add2,$city,$state,$zip,$this->UNAME);
-            $stmt->execute();
 
-            if($conn->query($sql) === TRUE) {
+
+            if($stmt->execute() === TRUE) {
                 //echo "Entry updated successfully";
             } else {
                 //echo "Error: " . $sql . "<br>" . $conn->error;
@@ -92,9 +92,8 @@ class EditProfile {
 
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssssss", $this->UNAME,$fname,$lname,$add1,$add2,$city,$state,$zip);
-            $stmt->execute();
 
-            if($conn->query($sql) === TRUE) {
+            if($stmt->execute() === TRUE) {
                 //echo "New record created successfully";
             } else {
                 //echo "Error: " . $sql . "<br>" . $conn->error;
