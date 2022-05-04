@@ -74,7 +74,12 @@ class EditProfile {
         }
 
         if($exist) {
-            $sql = "UPDATE UserProfile SET FName = '$fname', LName = '$lname', Add1 = '$add1', Add2 = '$add2', City = '$city', StateCode = '$state', Zip = '$zip' WHERE UserName = '$this->UNAME'";
+            $sql = "UPDATE UserProfile SET FName = ?, LName = ?, Add1 = ?, Add2 = ?, City = ?, StateCode = ?, Zip = ? WHERE UserName = ?";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssssss", $fname,$lname,$add1,$add2,$city,$state,$zip,$this->UNAME);
+            $stmt->execute();
+
             if($conn->query($sql) === TRUE) {
                 //echo "Entry updated successfully";
             } else {
@@ -83,7 +88,12 @@ class EditProfile {
         }
         else {
             $sql = "INSERT INTO UserProfile (UserName, FName, LName, Add1, Add2, City, StateCode, Zip)
-            VALUES ('$this->UNAME', '$fname', '$lname', '$add1', '$add2', '$city', '$state', '$zip')";
+            VALUES (?,?,?,?,?,?,?,?)";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssssss", $this->UNAME,$fname,$lname,$add1,$add2,$city,$state,$zip);
+            $stmt->execute();
+
             if($conn->query($sql) === TRUE) {
                 //echo "New record created successfully";
             } else {

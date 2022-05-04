@@ -22,7 +22,12 @@ if ($conn->connect_error) {
 
 $new = 0;
 $nametest = $_SESSION['username'];
-$sql = "UPDATE users SET new = '$new' WHERE username = '$nametest'";
+$sql = "UPDATE users SET new = ? WHERE username = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("is", $new, $nametest);
+$stmt->execute();
+
 if ($conn->query($sql) === TRUE) {
     //echo "New record created successfully";
 } else {
