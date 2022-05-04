@@ -16,7 +16,6 @@ final class ProfileTest extends TestCase
         $this->assertNotNull($firstName);
         $this->assertNotNull($lastName);
         $this->assertNotNull($address1);
-        //$this->assertNotNull($address2);
         $this->assertNotNull($city);
         $this->assertNotNull($state);
         $this->assertNotNull($zipCode);

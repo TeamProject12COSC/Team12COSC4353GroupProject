@@ -59,7 +59,6 @@ class EditProfile {
             die("Connection failed: " . $conn->connect_error);
         }
 
-
         $exist = False;
         $sql = "SELECT UserName FROM UserProfile";
         $result = $conn->query($sql);
@@ -78,7 +77,6 @@ class EditProfile {
 
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssssss", $fname,$lname,$add1,$add2,$city,$state,$zip,$this->UNAME);
-
 
             if($stmt->execute() === TRUE) {
                 //echo "Entry updated successfully";
@@ -99,7 +97,6 @@ class EditProfile {
                 //echo "Error: " . $sql . "<br>" . $conn->error;
             } 
         }
-
         
         $this->firstName = $fname;
         $this->lastName = $lname;

@@ -46,43 +46,42 @@ $city = "default";
 $state = "default";
 $zipCode = "default";
 
-    $profile = new EditProfile($username);
+$profile = new EditProfile($username);
 
-
-    if (isset($_POST["FirstName"])) {
-        $firstName = $_POST["FirstName"];
-    }
-    if (isset($_POST["LastName"])) {
-       $lastName = $_POST["LastName"];
-    }
-    if (isset($_POST["Address1"])) {
-       $address1 = $_POST["Address1"];
-    }
-    if (isset($_POST["Address2"])) {
-       $address2 = $_POST["Address2"];
-    }
-    if (isset($_POST["City"])) {
-       $city = $_POST["City"];
-    }
-    if (isset($_POST["State"])) {
-       $state = $_POST["State"];
-    }
-    if (isset($_POST["Zipcode"])) {
-       $zipCode = $_POST["Zipcode"];
-    }
-    if (isset($_POST["Zipcode"])) {
-        $profile->create_entry($username, $firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
-    }
+if (isset($_POST["FirstName"])) {
+    $firstName = $_POST["FirstName"];
+}
+if (isset($_POST["LastName"])) {
+   $lastName = $_POST["LastName"];
+}
+if (isset($_POST["Address1"])) {
+   $address1 = $_POST["Address1"];
+}
+if (isset($_POST["Address2"])) {
+   $address2 = $_POST["Address2"];
+}
+if (isset($_POST["City"])) {
+   $city = $_POST["City"];
+}
+if (isset($_POST["State"])) {
+   $state = $_POST["State"];
+}
+if (isset($_POST["Zipcode"])) {
+   $zipCode = $_POST["Zipcode"];
+}
+if (isset($_POST["Zipcode"])) {
+    $profile->create_entry($username, $firstName, $lastName, $address1, $address2, $city, $state, $zipCode);
+}
     
-    $profile->update();
+$profile->update();
 
-    $firstName = $profile->getFirstName();
-    $lastName = $profile->getLastName();
-    $address1 = $profile->getAddress1();
-    $address2 = $profile->getAddress2();
-    $city = $profile->getCity();
-    $state = $profile->getState();
-    $zipCode = $profile->getZipCode();
+$firstName = $profile->getFirstName();
+$lastName = $profile->getLastName();
+$address1 = $profile->getAddress1();
+$address2 = $profile->getAddress2();
+$city = $profile->getCity();
+$state = $profile->getState();
+$zipCode = $profile->getZipCode();
 
 ?>
 <!DOCTYPE html>
