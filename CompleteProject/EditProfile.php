@@ -83,12 +83,12 @@ class EditProfile {
         }
         else {
             $sql = "INSERT INTO UserProfile (UserName, FName, LName, Add1, Add2, City, StateCode, Zip)
-            VALUES ('$this->UNAME', '$fname', '$lname' , '$add1', '$add2', '$city', '$state', '$zip')";
+            VALUES ('$this->UNAME', '$fname', '$lname', '$add1', '$add2', '$city', '$state', '$zip')";
             if($conn->query($sql) === TRUE) {
                 //echo "New record created successfully";
             } else {
                 //echo "Error: " . $sql . "<br>" . $conn->error;
-            }
+            } 
         }
 
         
